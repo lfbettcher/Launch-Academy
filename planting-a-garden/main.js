@@ -45,21 +45,36 @@ leafyGreens = ["arugula", "kale", "romaine", "iceberg"];
 
 myGarden = [];
 
-// We love making homemade sauce (or gravy) for pasta dinners.
-// Let's write a line of code to return every kind of tomato seed you can order from the allSeeds array,
-// then add those seed names to the array myGarden.
+// 1 (written in two parts)
 const isTomatoSeed = (seed) => seed.includes("tomato");
 myGarden.push(...allSeeds.filter(isTomatoSeed));
 
-// We love having fresh berries on our yogurt.
-// Write a line of code to return every berry seed in the allSeeds array,
-// then add those seed names to the array myGarden.
-const isBerrySeed = (seed) => seed.includes("berry");
-myGarden.push(...allSeeds.filter(isBerrySeed));
+// 2 (written in one part)
+myGarden.push(...allSeeds.filter((seed) => seed.includes("berry")));
 
-// We've lost track of what we want to order.
-// Write some code that logs each item from your myGarden array,
-// then tells you how many plants you've selected in total.
+// 3
+myGarden.push(...allSeeds.filter((seed) => seed.includes("pepper") && !seed.includes("cayenne")));
+
+// 4
+const availableSeeds = [...allSeeds.filter((seed) => !myGarden.includes(seed))].sort();
+
+// 5
+const notFruits = fruits.filter(
+  (fruit) => fruit.includes("tomato") || fruit.includes("pepper") || fruit.includes("squash")
+);
+fruits = fruits.filter((fruit) => notFruits.indexOf(fruit) === -1);
+vegetables = vegetables.concat(notFruits);
+
+// 6
+const allArrays = [allSeeds, fruits, vegetables, leafyGreens, myGarden, availableSeeds];
+for (let i = 0; i < allArrays.length; i++) {
+  allArrays[i] = allArrays[i].filter((item) => !item.includes("iceberg"));
+}
+
+// 7
+myGarden.push(allSeeds.find((seed) => seed.includes("squash")));
+
+// 8
 const totalGardenPlants = myGarden.reduce((count, plant) => {
   console.log(plant);
   return count + true;
