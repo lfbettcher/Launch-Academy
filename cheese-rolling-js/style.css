@@ -1,0 +1,12 @@
+body {
+  margin-left: 25px;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
