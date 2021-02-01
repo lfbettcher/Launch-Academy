@@ -9,9 +9,10 @@ const createNewMenu = (title, startTime, endTime) => ({
   printMenu() {
     console.log(`${this.title} is from ${this.startTime} to ${this.endTime}.`);
     this.meals.forEach((meal) => {
-      console.log(`Menu item: ${meal.name}`);
+      const { name, ingredients } = meal;
+      console.log(`Menu item: ${name}`);
       let ingredientsString = "";
-      meal.ingredients.forEach((ingredient) => {
+      ingredients.forEach((ingredient) => {
         ingredientsString += ` ${ingredient.name}`;
       });
       console.log(`Ingredients:${ingredientsString}`);
