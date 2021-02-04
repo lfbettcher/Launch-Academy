@@ -36,87 +36,61 @@ describe("A conference", () => {
   });
 
   describe("#register", () => {
-    it("registers a Person as an attendee", () => {
-      conference.register(newPerson);
+    it("registers a Person as an attendee and returns true", () => {
+      expect(conference.register(newPerson)).toEqual(true);
       expect(conference.attendees).toEqual([newPerson]);
     });
 
-    it("returns true if successfully registered", () => {
-      const registerBool = conference.register(newPerson);
-      if (conference.attendees === [newPerson]) expect(registerBool).toEqual(true);
-    });
-
-    it("do not register a person if that email address has already been registered", () => {
-      conference.register(newPerson);
-      const personSameEmail = new Person("NameFirst", "NameLast", "email@email.com");
-      conference.register(personSameEmail);
-      expect(conference.attendees).toEqual([newPerson]);
-    });
-
-    it("returns false if person with an already registered email address is not added to the list", () => {
-      conference.register(newPerson);
-      const personSameEmail = new Person("NameFirst", "NameLast", "email@email.com");
+    it("do not register a person if that email address has already been registered and returns false", () => {
+      conference.attendees = [newPerson];
+      const personSameEmail = new Person("NameFirst", "NameLast", newPerson.email);
       expect(conference.register(personSameEmail)).toEqual(false);
-    });
-
-    it("register does not add a person to the list if the conference has reached the maximum number of registrants", () => {
-      conference.maxRegistrants = 1;
-      conference.register(newPerson);
-      conference.register(person2);
       expect(conference.attendees).toEqual([newPerson]);
     });
 
-    it("returns false if conference is full and person is not added to the list", () => {
-      conference.maxRegistrants = 1;
-      conference.register(newPerson);
+    it("register does not add a person to the list if the conference has reached the maximum number of registrants and returns false", () => {
+      conference.attendees = [newPerson];
+      conference.maxRegistrants = conference.attendees.length;
       expect(conference.register(person2)).toEqual(false);
+      expect(conference.attendees).toEqual([newPerson]);
     });
   });
 
   describe("#addSession", () => {
-    it("takes one Session object as its argument and adds the session to the list of the conference's sessions", () => {
-      conference.register(newPerson);
-      conference.addSession(session1);
+    it("takes one Session object as its argument and adds the session to the list of the conference's sessions, returns true", () => {
+      conference.attendees = [session1.facilitator];
+      expect(conference.addSession(session1)).toEqual(true);
       expect(conference.sessions).toEqual([session1]);
     });
 
     it("return false if attempting to add a Session facilitated by an email address not found on the list of attendees", () => {
-      const personNotRegistered = new Person("Not", "Registered", "nr@email.com");
+      conference.attendees = [newPerson];
+      const personNotRegistered = new Person("Not", "Registered", `not${newPerson.email}`);
       const sessionReject = new Session("Session No Title", personNotRegistered, 800, 1000);
-      conference.addSession(sessionReject);
       expect(conference.addSession(sessionReject)).toEqual(false);
+      expect(conference.sessions).toEqual([]);
     });
 
-    it("does not add a Session that spans time already scheduled with another session", () => {
-      conference.register(newPerson);
-      conference.register(person2);
-      conference.addSession(session1);
-      conference.addSession(session2);
-      const sessionOverlap = new Session("Session Overlap", person2, 1030, 1130);
-      conference.addSession(sessionOverlap);
-      expect(conference.sessions.sort()).toEqual([session1, session2].sort());
-    });
-
-    it("return false if attempting to add a Session that spans time already scheduled with another session", () => {
-      conference.register(newPerson);
-      conference.register(person2);
-      conference.addSession(session1);
-      conference.addSession(session2);
+    it("does not add a Session that spans time already scheduled with another session and returns false", () => {
+      conference.attendees = [newPerson, person2];
+      conference.sessions = [session1, session2];
       const sessionOverlap = new Session("Session Overlap", person2, 1030, 1130);
       expect(conference.addSession(sessionOverlap)).toEqual(false);
+      expect(conference.sessions.sort()).toEqual([session1, session2].sort());
     });
   });
 
   describe("#summary", () => {
+    beforeEach(() => {
+      conference.attendees = [newPerson, person2];
+      conference.sessions = [session1, session2];
+    });
+
     it(
       "prints a summary which includes conference name, number of registrants, registrant names, " +
         "sessions titles, facilitators, start and end times (sorted by start time), and if registration is still open",
       () => {
-        conference.maxRegistrants = 3;
-        conference.register(newPerson);
-        conference.register(person2);
-        conference.addSession(session1);
-        conference.addSession(session2);
+        conference.maxRegistrants = conference.attendees.length + 1;
         expect(conference.summary()).toEqual(
           `${conference.name} has ${
             conference.attendees.length
@@ -134,11 +108,7 @@ describe("A conference", () => {
     );
 
     it("prints registration is closed if conference is at capacity", () => {
-      conference.maxRegistrants = 2;
-      conference.register(newPerson);
-      conference.register(person2);
-      conference.addSession(session1);
-      conference.addSession(session2);
+      conference.maxRegistrants = conference.attendees.length;
       expect(conference.summary()).toEqual(
         `${conference.name} has ${
           conference.attendees.length

@@ -17,9 +17,11 @@ class Conference {
     if (
       !this.isSessionOverlap(session) &&
       this.attendees.some((attendee) => attendee.email === session.facilitator.email)
-    )
+    ) {
       this.sessions.push(session);
-    else return false;
+      return true;
+    }
+    return false;
   }
 
   summary() {

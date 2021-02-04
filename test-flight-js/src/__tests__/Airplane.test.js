@@ -6,9 +6,7 @@ describe("An Airplane", () => {
   let horsepower;
   let fuel;
   let fuelNeeded;
-  let state;
-  let fuelStartTakeoffLand;
-  let fuelTakeoffLand;
+  let defaultState;
 
   let newAirplane;
 
@@ -18,9 +16,7 @@ describe("An Airplane", () => {
     horsepower = 150;
     fuel = 0;
     fuelNeeded = { start: 10, takeoff: 50, land: 20 };
-    fuelStartTakeoffLand = fuelNeeded.start + fuelNeeded.takeoff + fuelNeeded.land;
-    fuelTakeoffLand = fuelNeeded.takeoff + fuelNeeded.land;
-    state = "off";
+    defaultState = "off";
     newAirplane = new Airplane(type, wingLoading, horsepower, fuel, fuelNeeded);
   });
 
@@ -50,84 +46,96 @@ describe("An Airplane", () => {
     });
 
     it("is initialized with state defaulted", () => {
-      expect(newAirplane.state).toEqual(state);
+      expect(newAirplane.state).toEqual(defaultState);
     });
   });
 
   describe("#start", () => {
-    it("turns on the engine if it isn't already running and there is enough fuel", () => {
+    beforeEach(() => {
       newAirplane.fuel = fuelNeeded.start;
+    });
+
+    it("starts airplane if it isn't already running and there is enough fuel", () => {
       expect(newAirplane.start()).toEqual("airplane started");
+      expect(newAirplane.state).toEqual("started");
     });
 
     it("does not start if there is not enough fuel", () => {
-      newAirplane.fuel = fuelNeeded.start - 1;
+      newAirplane.fuel -= 1;
       expect(newAirplane.start()).toEqual("airplane does not have enough fuel to start");
+      expect(newAirplane.state).toEqual("off");
     });
 
     it("returns if the airplane is already running", () => {
-      newAirplane.fuel = 2 * fuelNeeded.start;
-      newAirplane.start();
+      newAirplane.state = "started";
       expect(newAirplane.start()).toEqual("airplane already started");
+      expect(newAirplane.state).toEqual("started");
     });
   });
 
   describe("#takeoff", () => {
+    beforeEach(() => {
+      newAirplane.fuel = fuelNeeded.takeoff + fuelNeeded.land;
+    });
+
     it(
       "changes the state of the airplane to flying if the engine has been" +
         "started and has enough fuel to takeoff and land",
       () => {
-        newAirplane.fuel = fuelStartTakeoffLand;
-        newAirplane.start();
+        newAirplane.state = "started";
         expect(newAirplane.takeoff()).toEqual("airplane launched");
+        expect(newAirplane.state).toEqual("flying");
       }
     );
 
     it("does not takeoff if there is not enough fuel to takeoff and land", () => {
-      newAirplane.fuel = fuelStartTakeoffLand - 1;
-      newAirplane.start();
+      newAirplane.fuel -= 1;
+      newAirplane.state = "started";
       expect(newAirplane.takeoff()).toEqual("not enough fuel to takeoff and land");
+      expect(newAirplane.state).toEqual("started");
     });
 
     it("returns if the airplane engine has not been started and cannot takeoff", () => {
-      newAirplane.fuel = fuelTakeoffLand;
+      newAirplane.state = "off";
       expect(newAirplane.takeoff()).toEqual("airplane not started, please start");
+      expect(newAirplane.state).toEqual("off");
     });
   });
 
   describe("#land", () => {
-    it("returns if the airplane has not been started", () => {
+    beforeEach(() => {
       newAirplane.fuel = fuelNeeded.land;
+    });
+
+    it("returns if the airplane has not been started", () => {
+      newAirplane.state = "off";
       expect(newAirplane.land()).toEqual("airplane not started, please start");
+      expect(newAirplane.state).toEqual("off");
     });
 
     it("returns if the airplane is on the ground (has not taken off)", () => {
-      newAirplane.fuel = fuelNeeded.start + fuelNeeded.land;
-      newAirplane.start();
+      newAirplane.state = "started";
       expect(newAirplane.land()).toEqual("airplane has not taken off");
+      expect(newAirplane.state).toEqual("started");
     });
 
     it("lands the airplane if it is currently flying and there is enough fuel to land", () => {
-      newAirplane.fuel = fuelStartTakeoffLand;
-      newAirplane.start();
-      newAirplane.takeoff();
+      newAirplane.state = "flying";
       expect(newAirplane.land()).toEqual("airplane landed");
+      expect(newAirplane.state).toEqual("landed");
     });
 
     it("cannot land the airplane if there is not enough fuel", () => {
-      newAirplane.fuel = fuelStartTakeoffLand;
-      newAirplane.start();
-      newAirplane.takeoff();
-      newAirplane.fuel = fuelNeeded.land - 1;
+      newAirplane.fuel -= 1;
+      newAirplane.state = "flying";
       expect(newAirplane.land()).toEqual("houston, we have a problem!");
+      expect(newAirplane.state).toEqual("flying");
     });
 
     it("returns if airplane is already on the ground", () => {
-      newAirplane.fuel = fuelStartTakeoffLand + fuelNeeded.land;
-      newAirplane.start();
-      newAirplane.takeoff();
-      newAirplane.land();
+      newAirplane.state = "landed";
       expect(newAirplane.land()).toEqual("airplane has already landed");
+      expect(newAirplane.state).toEqual("landed");
     });
   });
 });
