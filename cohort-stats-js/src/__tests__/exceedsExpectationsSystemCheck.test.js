@@ -4,7 +4,7 @@ import SystemCheckSubmission from '../SystemCheckSubmission.js'
 import Cohort from '../Cohort.js'
 import Grade from '../Grade.js'
 
-describe.skip('system check class for exceeds', () => {
+describe('system check class for exceeds', () => {
   let charlie
   let josiah
   let zoey

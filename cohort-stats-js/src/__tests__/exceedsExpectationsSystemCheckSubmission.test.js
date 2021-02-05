@@ -2,7 +2,7 @@ import Student from '../Student.js'
 import SystemCheckSubmission from '../SystemCheckSubmission.js'
 import Grade from '../Grade.js'
 
-describe.skip('system check submission class for exceeds', () => {
+describe('system check submission class for exceeds', () => {
   let student
   let submission
 

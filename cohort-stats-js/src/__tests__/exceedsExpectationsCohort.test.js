@@ -3,7 +3,7 @@ import SystemCheck from '../SystemCheck.js'
 import SystemCheckSubmission from '../SystemCheckSubmission.js'
 import Cohort from '../Cohort.js'
 
-describe.skip('cohort class', () => {
+describe('cohort class', () => {
   let firstDay
   let lastDay
   let cohort

@@ -21,6 +21,11 @@ class Cohort {
       .join("");
     return `Cohort: ${this.title}\n--------------------\n${studentString}`;
   }
+
+  systemCheckCompleted(systemCheck) {
+    const studentsSubmitted = systemCheck.submissions.map((submission) => submission.student.name);
+    return this.students.every((student) => studentsSubmitted.includes(student.name));
+  }
 }
 
 export default Cohort;

@@ -39,4 +39,10 @@ describe("system check class", () => {
       expect(systemCheck.submissions).toContain(submission)
     })
   })
+
+  describe("#submittable", () => {
+    it("returns true", () => {
+      expect(systemCheck.submittable()).toEqual(true);
+    });
+  });
 })
