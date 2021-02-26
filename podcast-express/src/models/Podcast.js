@@ -17,11 +17,6 @@ class Podcast {
   }
 
   static save() {
-    getPodcasts().podcasts.push(newArticleObject)
-
-    const data = { articles }
-    fs.writeFileSync(articlesPath, JSON.stringify(data))
-    return true
   }
 }
 

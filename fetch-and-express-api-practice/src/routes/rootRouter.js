@@ -1,5 +1,5 @@
 import express from "express"
-import productsRouter from "./productsRouter.js"
+import booksRouter from "./api/v1/booksRouter.js"
 
 const rootRouter = new express.Router()
 
@@ -7,6 +7,6 @@ rootRouter.get("/", (req, res) => {
   res.render("index")
 })
 
-rootRouter.use("/products", productsRouter)
+rootRouter.use("/api/v1/books", booksRouter)
 
 export default rootRouter

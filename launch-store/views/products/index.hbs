@@ -1,0 +1,12 @@
+<ul>{{log products}}
+  {{#each products }}
+    <li><a href="/products/{{ this.name }}">{{ this.name }}</a>
+      <ul>
+        <li>${{ this.price }}</li>
+      </ul>
+    </li>
+  {{/each }}
+</ul>
+<form action="/products/new" method="get">
+  <input type="submit" value="Add a new Product">
+</form>

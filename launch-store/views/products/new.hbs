@@ -1,0 +1,24 @@
+<h1 class="la-blue">Add a new Product</h1>
+{{#if error }}
+  <li>{{ error }}</li>
+{{/if }}
+<form action="/products" method="post">
+  <label for="name">Name:
+    <input type="text" name="name" id="name">
+  </label><br>
+  <label for="description">Description:
+    <input type="text" name="description" id="description">
+  </label><br>
+  <label for="price">Price:
+    <input type="number" name="price" id="price">
+  </label><br>
+  <p>Is this a featured product?</p>
+  <label for="featured-true">Yes
+    <input type="radio" name="featured" id="featured-true" value="true">
+  </label><br>
+  <label for="featured-false">No
+    <input type="radio" name="featured" id="featured-false" value="false">
+  </label><br>
+  <input type="submit" value="Add New Product">
+</form>
+<a href="/products">Back to Products Page</a>

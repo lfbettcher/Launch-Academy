@@ -1,0 +1,11 @@
+<h1>{{ product.name }}</h1>
+<ul>
+  <li>{{ product.description }}</li>
+  <li>${{ product.price }}</li>
+</ul>
+<form action="/products/delete" method="post">
+  <input type="text" name="deleteProduct" value="{{ product.name }}" hidden>
+  <label for="delete">
+    <input type="submit" value="Delete Product">
+  </label>
+</form>

@@ -1,0 +1,10 @@
+<h1>List of Groceries</h1>
+<ul id="groceriesList">
+  {{#each groceries }}
+    <li><a href="/groceries/{{ this.name }}">{{ this.name }}</a></li>
+  {{/each }}
+</ul>
+
+<a href="/groceries/new">Add a Grocery Item</a>
+<br>
+<button id="randomBtn">Add Random Item</button>

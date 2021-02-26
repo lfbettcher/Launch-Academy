@@ -1,10 +1,10 @@
-{ 
+{
   "products": [
     {
       "name": "Rubber Duck",
       "description": "Your resident conversationalist",
       "price": 4.99,
-      "featured": true 
+      "featured": true
     },
     {
       "name": "Engineering Journal",

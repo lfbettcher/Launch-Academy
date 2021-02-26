@@ -1,0 +1,14 @@
+<h1>Add a Grocery Item</h1>
+
+{{#if error }}
+  <p>{{ error }}</p>
+{{/if }}
+
+<form action="/groceries" method="POST">
+  <label for="name">Name:
+    <input type="text" name="name" id="name">
+  </label><br>
+  <input type="submit" value="Add a new grocery item">
+</form>
+
+<a href="/groceries">Groceries Index Page</a>
