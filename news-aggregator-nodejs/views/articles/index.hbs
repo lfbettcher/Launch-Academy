@@ -1,0 +1,13 @@
+<h1>Articles</h1>
+<form action="/articles/new" method="get">
+  <input type="submit" value="Add New Article">
+</form>
+{{> page articles }}
+<div id="paginate">
+  <ul id="paginate-list">
+    {{#each pages }}
+    <li><button>{{@index}}</button></li>
+    {{/each }}
+  </ul>
+</div>
+</ul>

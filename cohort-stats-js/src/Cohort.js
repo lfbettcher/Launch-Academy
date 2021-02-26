@@ -23,8 +23,11 @@ class Cohort {
   }
 
   systemCheckCompleted(systemCheck) {
-    const studentsSubmitted = systemCheck.submissions.map((submission) => submission.student.name);
-    return this.students.every((student) => studentsSubmitted.includes(student.name));
+    const studentsSubmitted = systemCheck.submissions.map((submission) => submission.student);
+    return this.students.every((student) => studentsSubmitted.includes(student));
+    // return this.students.length === systemCheck.submissions.length;
+    // return this.students.every((student) => systemCheck.didStudentCompleteSystemCheck(student));
+    // return !this.students.some((student) => !systemCheck.didStudentCompleteSystemCheck(student));
   }
 }
 

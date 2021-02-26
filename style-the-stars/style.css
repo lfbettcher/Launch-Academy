@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url(./stars.jpg);
+}
+
+h1 {
+  color: #f47912;
+}
+
+h2,
+h4 {
+  color: #f2f412;
+}
+
+p {
+  color: #f419df;
+}
+
+li {
+  color: #61dc21;
+}
+
+.centered {
+  text-align: center;
+}
+
+.facts-section {
+  border: 2px solid #36f4e3;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Name</title>
+
+    <!-- stylesheets -->
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/css/foundation.min.css"
+      integrity="sha256-GSio8qamaXapM8Fq9JYdGNTvk/dgs+cMLgPeevOYEx0= sha384-wAweiGTn38CY2DSwAaEffed6iMeflc0FMiuptanbN4J+ib+342gKGpvYRWubPd/+ sha512-QHEb6jOC8SaGTmYmGU19u2FhIfeG+t/hSacIWPpDzOp5yygnthL3JwnilM7LM1dOAbJv62R+/FICfsrKUqv4Gg=="
+      crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <!-- nav bar -->
+    <nav data-sticky-container>
+      <div class="top-bar" data-sticky data-options="marginTop:0;" style="width:100%">
+        <div class="top-bar-left">
+          <ul class="menu">
+            <li><a href="#" class="menu-text">Movie</a></li>
+            <li><a href="#synopsis">Synopsis</a></li>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#list-of-characters">List of Characters</a></li>
+            <li><a href="#soundtrack">Soundtrack</a></li>
+            <li><a href="#crew-list">Crew List</a></li>
+          </ul>
+        </div>
+    </nav>
+
+    <div class="grid-container text-center">
+      <!-- header text -->
+      <div class="text-center">
+        <h1 id="movie-name">Movie Name</h1>
+      </div>
+
+      <!-- Synopsis -->
+      <div id="synopsis" class="hash-change section">
+        <h3>Synopsis</h3>
+        <p>This is a synopsis of Movie Name. This is a brief pitch, very brief.</p>
+      </div>
+
+      <!-- Summary -->
+      <div id="summary" class="hash-change section">
+        <h3>Summary</h3>
+        <p>
+          Movie Name was released in 2020. It is rated 7/10 stars. It is from movie studio Studio
+          Movies. <a href=#character1>Character 1</a> is played by <a href=#actor1>Actor 1</a> and
+          <a href=#character2>Character 2</a> is played by <a href=#actor2>Actor 2</a>.
+          It is written by <a href=#writer1>Writer 1</a> and <a href=#writer2>Writer 2</a> and
+          directed by <a href=#director1>Director 1</a> and <a href=#director2>Director 2</a>.
+          The plot:
+          I'm baby unicorn forage aesthetic paleo shaman pitchfork organic narwhal air plant banjo
+          lumbersexual sustainable before they sold out pok pok ramps. Woke cloud bread VHS before
+          they sold out godard intelligentsia ethical you probably haven't heard of them beard
+          aesthetic green juice affogato. Fanny pack try-hard coloring book celiac mixtape, four
+          dollar toast literally locavore subway tile meggings small batch. Forage banh mi taxidermy
+          jianbing banjo keffiyeh ennui locavore retro church-key seitan af. Meditation gluten-free
+          YOLO flexitarian truffaut chia irony disrupt DIY direct trade quinoa drinking vinegar tote
+          bag sartorial pickled. Fanny pack microdosing etsy, edison bulb lomo humblebrag brooklyn
+          swag neutra single-origin coffee leggings activated charcoal tattooed.
+
+          Iceland wayfarers mixtape lo-fi meh organic disrupt banjo. Semiotics meh godard, vaporware
+          tumblr crucifix whatever helvetica succulents 3 wolf moon post-ironic. Bitters jianbing
+          intelligentsia waistcoat pabst distillery four dollar toast keytar kickstarter tofu shabby
+          chic mlkshk deep v chicharrones microdosing. Poutine palo santo DIY distillery unicorn
+          offal knausgaard jean shorts. Direct trade jean shorts cliche literally williamsburg, blog
+          semiotics bushwick health goth live-edge pickled activated charcoal XOXO.
+        </p>
+      </div>
+
+      <!-- List of Characters -->
+      <div id="list-of-characters" class="hash-change section">
+        <h3>List of Characters</h3>
+        <ol id="character-list" class="centered-list">
+          <li id="character1" class="hash-change">Character 1<a class="select-favorite"> Select Favorite</a>
+            <ul>
+              <li id="actor1" class="hash-change">Actor 1</li>
+              <li>Protagonist</li>
+              <li>"Quote Character 1 said"</li>
+              <li class="no-bullet"><img src="https://picsum.photos/200/200"></li>
+              <li>Brief bio of Character 1</li>
+            </ul>
+          </li>
+          <li id="character2" class="hash-change">Character 2<a class="select-favorite"> Select Favorite</a>
+            <ul>
+              <li id="actor2" class="hash-change">Actor 2</li>
+              <li>Antagonist</li>
+              <li>"Quote Character 2 said"</li>
+              <li class="no-bullet"><img src="https://picsum.photos/200/200"></li>
+              <li>Brief bio of Character 2</li>
+            </ul>
+          </li>
+          <li id="character3">Character 3<a class="select-favorite"> Select Favorite</a>
+            <ul>
+              <li>Actor 3</li>
+              <li>Protagonist</li>
+              <li>"Quote Character 3 said"</li>
+              <li class="no-bullet"><img src="https://picsum.photos/200/200"></li>
+              <li>Brief bio of Character 3</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Soundtrack -->
+      <div id="soundtrack" class="hash-change section">
+        <h3>Soundtrack</h3>
+        <ol class="centered-list">
+          <li>Track 1
+            <ul>
+              <li>Artist 1</li>
+              <li><a href="https://www.google.com">Link to purchase Track 1</a></li>
+            </ul>
+          </li>
+          <li>Track 2
+            <ul>
+              <li>Artist 2</li>
+              <li><a href="https://www.google.com">Link to purchase Track 2</a></li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Crew List -->
+      <div id="crew-list" class="section section">
+        <h3>Crew List</h3>
+        <ol class="centered-list">
+          <li>Writers
+            <ul>
+              <li id="writer1">Writer 1</li>
+              <li id="writer2">Writer 2</li>
+            </ul>
+          </li>
+          <li>Directors
+            <ul>
+              <li id="director1">Director 1</li>
+              <li id="director1">Director 2</li>
+            </ul>
+          </li>
+          <li>Top Listed Producer
+            <ul>
+              <li>Producer 1</li>
+              <li>Producer 2</li>
+            </ul>
+          </li>
+          <li>Key Grip
+            <ul>
+              <li>Key Grip 1</li>
+              <li>Key Grip 2</li>
+            </ul>
+          </li>
+          <li>Best Boy
+            <ul>
+              <li>Best Boy 1</li>
+              <li>Best Boy 2</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Random Quote -->
+    <div id="random-quote" class="text-center">
+      <button id="quote-btn" type="button" class="button">Generate Quote</button>
+      <p><i id="quote">"Random Quote 1"</i></p>
+      <p>~<span id="quote-character">Character 1</span></p>
+    </div>
+
+    <!-- Sticky Footer -->
+    <footer data-sticky-container>
+      <div class="sticky" data-sticky data-stick-to="bottom" data-options="marginBottom:0">
+        <h5><a href=#>Go to top of page</a></h5>
+      </div>
+    </footer>
+
+    <!-- javascript -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.4.3/dist/js/foundation.min.js"
+      integrity="sha256-mRYlCu5EG+ouD07WxLF8v4ZAZYCA6WrmdIXyn1Bv9Vk= sha384-KzKofw4qqetd3kvuQ5AdapWPqV1ZI+CnfyfEwZQgPk8poOLWaabfgJOfmW7uI+AV sha512-0gHfaMkY+Do568TgjJC2iMAV0dQlY4NqbeZ4pr9lVUTXQzKu8qceyd6wg/3Uql9qA2+3X5NHv3IMb05wb387rA=="
+      crossorigin="anonymous"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    <script src="/main.js"></script>
+  </body>
+
+</html>

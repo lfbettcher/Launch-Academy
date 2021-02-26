@@ -1,0 +1,35 @@
+h1 {
+  font-size: 50px;
+  font-style: italic;
+  font-weight: bold;
+  color: steelblue;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: normal;
+  color: #674172;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: bold;
+  color: lightcoral;
+}
+
+h4 {
+  font-size: 25px;
+  font-style: italic;
+  font-weight: normal;
+  color: #1ba39c;
+}
+
+a {
+  color: #1e8bc3;
+}
+
+p {
+  font-size: 16px;
+  font-style: italic;
+  color: mediumpurple;
+}

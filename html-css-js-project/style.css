@@ -1,0 +1,46 @@
+body {
+  background-color: #f6f6f6;
+}
+
+.hidden {
+  display: none;
+}
+
+.show-hide {
+  margin: 1rem 0 0.5rem;
+}
+
+#movie-name {
+  font-family: "Gloria Hallelujah", cursive;
+  margin-top: 3rem;
+}
+
+.centered-list {
+  display: inline-block;
+  text-align: left;
+}
+
+.no-bullet {
+  list-style-type: none;
+}
+
+.hash-change {
+  margin-top: -4rem;
+  padding-top: 4rem;
+}
+
+.fav-border {
+  border: 2px solid blue;
+  padding: 1rem;
+  margin-top: 0.5rem;
+}
+
+#character-list > li {
+  margin-bottom: 1rem;
+}
+footer div {
+  width: 100%;
+  background-color: #e6e6e6;
+  text-align: center;
+  margin: 0;
+}

@@ -1,0 +1,16 @@
+<h1>Add a New Podcast</h1>
+<form action="/podcasts/new" method="post">
+  <label for="title">Title:
+    <input type="text" id="title" name="title" value="{{ podcasts.title }}">
+  </label><br>
+  <label for="url">Description:
+    <input type="text" id="url" name="url" value="{{ podcasts.description }}">
+  </label><br>
+  <label for="description">Network:
+    <input type="text" id="network" name="network" value="{{ podcasts.network }}">
+  </label><br>
+    <label for="description">Slug:
+    <input type="text" id="slug" name="slug" value="{{ podcasts.slug }}">
+  </label><br>
+  <input type="submit">
+</form>

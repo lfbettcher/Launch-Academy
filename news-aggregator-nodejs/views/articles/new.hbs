@@ -1,0 +1,16 @@
+<h1>Add a New Article</h1>
+<form action="/articles/new" method="post">
+  <label for="title">Title:
+    <input type="text" id="title" name="title" value="{{ article.title }}">
+    {{> error article.errors.title }}
+  </label><br>
+  <label for="url">Url:
+    <input type="text" id="url" name="url" value="{{ article.url }}">
+    {{> error article.errors.url }}
+  </label><br>
+  <label for="description">Description:
+    <input type="text" id="description" name="description" value="{{ article.description }}">
+    {{> error article.errors.description }}
+  </label><br>
+  <input type="submit">
+</form>

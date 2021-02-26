@@ -1,0 +1,45 @@
+/* your CSS from an earlier exercise here  */
+body {
+  color: #483d8b;
+  background-color: #d3d3d3;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+#name-header {
+  color: #008b8b;
+  font-family: Cambria;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  color: #008b8b;
+  text-decoration: none;
+}
+
+img {
+  margin: 1rem;
+  width: 200px;
+}
+
+#my-photo {
+  border: 5px solid #32cd32;
+}
+
+.bold-link {
+  font-weight: bold;
+}
+
+/* Stylin 1 */
+.selected {
+  outline: red solid 3px;
+}
+
+/* Now you see me... 1 */
+.hidden {
+  display: none;
+}

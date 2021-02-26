@@ -8,8 +8,9 @@ class SystemCheckSubmission {
   }
 
   assignGrade(grade) {
+    console.log("grade", grade)
     if (Object.values(Grade).includes(grade)) {
-      this.grade = grade;
+      this.grade = 0;
       return grade;
     }
     return "Invalid Grade Error!";

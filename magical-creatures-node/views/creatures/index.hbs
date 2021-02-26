@@ -1,0 +1,12 @@
+{{#if creatures.length }}
+<h1>List of Creatures</h1>
+<h2>{{ creatures.length }} Magical creatures here</h2>
+{{#each creatures }}
+<h3><a href="/creatures/{{this.name}}">{{ this.name }}</a></h3>
+{{> details this }}
+{{/each }}
+</ul>
+{{else }}
+<h3>{{ this.name }}</h3>
+{{> details this }}
+{{/if }}

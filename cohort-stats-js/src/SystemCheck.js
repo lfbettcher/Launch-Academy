@@ -4,7 +4,7 @@ class SystemCheck {
     this.dueDate = dueDate;
     this.submissions = [];
   }
-
+ 
   addSubmission(submission) {
     this.submissions.push(submission);
   }
@@ -16,7 +16,7 @@ class SystemCheck {
 
   didStudentCompleteSystemCheck(student) {
     if (!student) return false;
-    return this.submissions.some((submission) => submission.student.name === student.name);
+    return this.submissions.some((submission) => submission.student === student);
   }
 
   submittable() {

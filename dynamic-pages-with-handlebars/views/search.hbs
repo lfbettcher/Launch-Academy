@@ -1,0 +1,11 @@
+{{#if nerdsFound.length }}
+<h2>{{ nerdsFound.length }} Folks on the Guest List</h2>
+<ul>
+{{#each nerdsFound}}
+  {{ log this }}
+  <li>{{ this }}</li>
+{{/each }}
+</ul>
+{{else }}
+ <h2>No people found based on your search.</h2>
+{{/if }} 

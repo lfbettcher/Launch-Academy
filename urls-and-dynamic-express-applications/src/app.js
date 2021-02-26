@@ -1,0 +1,24 @@
+import express from "express"
+import logger from "morgan"
+import bodyParser from "body-parser"
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+import rootRouter from "./routes/rootRouter.js"
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const app = express()
+
+app.use(logger("dev"))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, '../public')))
+
+app.use(rootRouter)
+
+app.listen(3000, "0.0.0.0", () => {
+  console.log("Server is listening...")
+})
+
+export default app

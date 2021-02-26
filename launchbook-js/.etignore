@@ -1,0 +1,5 @@
+# Files to ignore when uploading to Launch
+app.js
+app.css
+index.html
+launchbook-js.md

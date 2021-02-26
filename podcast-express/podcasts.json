@@ -1,0 +1,22 @@
+{ 
+  "podcasts": [
+    {
+      "title": "Rubber Duck",
+      "description": "Your resident conversationalist",
+      "network": "Network 1",
+      "slug": "Slug 1"
+    },
+    {
+      "name": "Engineering Journal",
+      "description": "Record your observations and thoughts as you work through coding projects",
+      "network": "Network 2",
+      "slug": "Slug 2"
+    },
+    {
+      "name": "Sleep Mask",
+      "description": "Get your Z's in so that you can code well in the morning",
+      "network": "Network 3",
+      "slug": "Slug 3"
+    }
+  ]
+}

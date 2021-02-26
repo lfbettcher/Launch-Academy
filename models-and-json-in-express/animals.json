@@ -1,0 +1,24 @@
+{
+  "animals": [
+    {
+      "id": 1,
+      "name": "Koala",
+      "type": "Marsupial"
+    },
+    {
+      "id": 2,
+      "name": "Platypus",
+      "type": "Monotreme"
+    },
+    {
+      "id": 3,
+      "name": "Quokka",
+      "type": "Marsupial"
+    },
+    {
+      "id": 4,
+      "name": "Kookaburra",
+      "type": "Bird"
+    }
+  ]
+}

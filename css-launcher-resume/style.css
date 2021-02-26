@@ -1,0 +1,31 @@
+body {
+  color: #483d8b;
+  background-color: #d3d3d3;
+  text-align: center;
+  font-family: Helvetica;
+}
+
+.name-header {
+  color: #008b8b;
+  font-family: Cambria;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+a {
+  color: #008b8b;
+  text-decoration: none;
+}
+
+img {
+  border: 5px solid #32cd32;
+  margin: 1rem;
+  width: 200px;
+}
+
+.bold-link {
+  font-weight: bold;
+}
