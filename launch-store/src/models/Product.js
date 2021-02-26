@@ -37,11 +37,24 @@ class Product {
   }
 
   save() {
-    const productsArray = this.constructor.findAll()
-    productsArray.push(this)
-    const productsJson = JSON.stringify({ products: productsArray })
-    fs.writeFileSync(productsPath, productsJson)
-    return true
+    if (this.isValid()) {
+      const productsArray = this.constructor.findAll()
+      productsArray.push(this)
+      const productsJson = JSON.stringify({ products: productsArray })
+      fs.writeFileSync(productsPath, productsJson)
+      return true
+    }
+  }
+
+  isValid() {
+    return !(
+      !this ||
+      !this.name ||
+      !this.price ||
+      this.name.trim() === "" ||
+      this.price.toString().trim() === "" ||
+      Number.isNaN(parseFloat(this.price))
+    )
   }
 }
 

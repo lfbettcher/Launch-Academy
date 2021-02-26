@@ -32,6 +32,12 @@ class Article {
     fs.writeFileSync(articlesPath, JSON.stringify(data))
     return true
   }
+
+  static random() {
+    const articles = this.findAll()
+    console.log(articles);
+    return articles[Math.floor(Math.random() * articles.length)]
+  }
 }
 
 export default Article

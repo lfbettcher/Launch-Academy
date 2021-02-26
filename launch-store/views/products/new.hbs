@@ -1,7 +1,7 @@
 <h1 class="la-blue">Add a new Product</h1>
 {{#if error }}
-  <li>{{ error }}</li>
-{{/if }}
+  <p class="error-text">{{ error }}</p>
+{{/if}}
 <form action="/products" method="post">
   <label for="name">Name:
     <input type="text" name="name" id="name">

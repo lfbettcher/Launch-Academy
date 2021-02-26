@@ -13,6 +13,10 @@ articlesRouter.get("/new", (req, res) => {
   res.render("articles/new")
 })
 
+articlesRouter.get("/random", (req, res) => {
+  res.render("articles/random")
+})
+
 articlesRouter.post("/", (req, res) => {
   const newArticle = new Article(req.body)
   newArticle.save()

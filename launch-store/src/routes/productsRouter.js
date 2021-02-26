@@ -5,7 +5,14 @@ import Product from "../models/Product.js"
 const productsRouter = express.Router()
 
 productsRouter.get("/", (req, res) => {
-  res.render("products/index", { products: Product.findFeatured() })
+  res.render("products/index", { products: Product.findAll(), featured: false })
+})
+
+productsRouter.get("/featured", (req, res) => {
+  res.render("products/index", {
+    products: Product.findFeatured(),
+    featured: true
+  })
 })
 
 productsRouter.get("/new", (req, res) => {
@@ -29,7 +36,7 @@ productsRouter.post("/", (req, res) => {
     featured: featuredBool
   })
   if (newProduct.save()) res.redirect("/products")
-  else res.render("products/new", { error })
+  else res.render("products/new", { error: "Missing fields" })
 })
 
 productsRouter.post("/delete", (req, res) => {

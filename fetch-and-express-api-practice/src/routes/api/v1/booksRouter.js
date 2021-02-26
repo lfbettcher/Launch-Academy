@@ -10,7 +10,7 @@ booksRouter.get("/", (req, res) => {
 
 booksRouter.post("/", (req, res) => {
   const book = new Book(req.body.book)
-  if(book.isValid()) {
+  if (book.isValid()) {
     book.save()
     res.status(201).json({ book })
   } else {

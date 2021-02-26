@@ -1,3 +1,15 @@
+{{#if featured }}
+  <h1>Featured Products</h1>
+  <form action="/products" method="get">
+    <input type="submit" value="Show All Products">
+  </form>
+{{else}}
+  <h1>All Products</h1>
+  <form action="/products/featured" method="get">
+    <input type="submit" value="Show Only Featured Products">
+  </form>
+{{/if}}
+
 <ul>{{log products}}
   {{#each products }}
     <li><a href="/products/{{ this.name }}">{{ this.name }}</a>
@@ -5,8 +17,9 @@
         <li>${{ this.price }}</li>
       </ul>
     </li>
-  {{/each }}
+  {{/each}}
 </ul>
+
 <form action="/products/new" method="get">
   <input type="submit" value="Add a new Product">
 </form>

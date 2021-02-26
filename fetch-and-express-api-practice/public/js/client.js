@@ -1,15 +1,15 @@
 const fetchBooks = async () => {
   try {
     const response = await fetch("http://localhost:3000/api/v1/books")
-    if(!response.ok) {
+    if (!response.ok) {
       const errorMessage = `${response.status} (${response.statusText})`
       const error = new Error(errorMessage)
-      throw(error)
+      throw error
     }
     const responseBody = await response.json()
     console.log("responseBody:", responseBody)
     return responseBody
-  } catch(err) {
+  } catch (err) {
     console.error("Error in fetch!")
     console.error(err)
   }
@@ -17,7 +17,10 @@ const fetchBooks = async () => {
 
 const addBooksToPage = async () => {
   const books = await fetchBooks()
-  // your code here
+  const booksList = document.querySelector("#books")
+  books.forEach((book) => {
+    booksList.innerHTML += `<li>${book.name}</li>`
+  })
 }
 
 addBooksToPage()
