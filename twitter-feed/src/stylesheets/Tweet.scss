@@ -1,0 +1,32 @@
+.tweet {
+  border: 2px solid #000000;
+  margin: 0.1rem 2rem;
+  padding: 1.2rem;
+}
+
+.profile-pic {
+  width: 6rem;
+}
+
+.gray,
+i {
+  color: $grey;
+}
+
+.like-red i,
+.like-red span {
+  color: $red;
+}
+
+.retweet-green i,
+.retweet-green span {
+  color: $green;
+}
+
+span.gray {
+  margin-left: 0.6rem;
+}
+
+.icons {
+  margin-top: 1rem;
+}

@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css?family=ABeeZee|Open+Sans");
+
+body {
+  font-family: "Open Sans", sans-serif;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-family: "ABeeZee", serif;
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+}
+
+div {
+  padding: 10px;
+  margin: 10px;
+}
+
+.pink-bg {
+  background-color: #ed1a7b;
+}
+
+.green-bg {
+  background-color: #84ce15;
+}
+
+.blue-bg {
+  background-color: #37becc;
+}
+
+.gray-bg {
+  background-color: #888888;
+}
+
+.event-tile {
+  background-color: #37becc;
+}
+
+.event-management-app {
+  background-color: #e5f3f4;
+  color: #1c2224;
+}
+
+.pill-button {
+  border-radius: 32px;
+  padding: 0.5em;
+  font-size: large;
+  font-weight: bold;
+  background-image: linear-gradient(to right, red 16.7%, purple 16.7% 50%, #fdeb2c 50%);
+}
+
+.centered {
+  text-align: center;
+}
+
+.inline {
+  display: flex;
+  justify-content: left;
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+
+.completed-button {
+  position: absolute;
+  right: 0;
+  margin: 1rem 1rem;
+}
