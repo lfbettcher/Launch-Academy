@@ -1,0 +1,30 @@
+body {
+  background-color: $light-blue;
+}
+
+.title {
+  text-align: center;
+  color: $blue;
+}
+
+.icon {
+  margin: 0 1rem 1rem 0;
+}
+
+i.fa-plus-square {
+  color: $black;
+}
+
+i.fa-minus-square {
+  color: $green;
+}
+
+.question-tile {
+  margin: 0.5rem;
+  color: $grey;
+}
+
+.question {
+  font-size: large;
+  font-weight: bold;
+}
