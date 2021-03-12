@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 
 const ArticleShow = (props) => {
   const [article, setArticle] = useState({ title: "", content: "" })
@@ -23,9 +24,10 @@ const ArticleShow = (props) => {
   }, [])
 
   return (
-    <div className="article-show">
+    <div className="article-show grid-container">
       <h2>{article.title}</h2>
       <p>{article.content}</p>
+      <Link to="/">Back to Articles List</Link>
     </div>
   )
 }

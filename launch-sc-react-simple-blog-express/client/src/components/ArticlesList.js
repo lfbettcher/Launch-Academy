@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react"
+import { Redirect } from "react-router-dom"
 
 import ArticleTile from "./ArticleTile"
 import ArticleForm from "./ArticleForm"
 
 const ArticlesList = (props) => {
   const [articles, setArticles] = useState([])
+  const [shouldRedirect, setShouldRedirect] = useState(false)
+  const [redirectId, setRedirectId] = useState(null)
 
   // Fetch all articles
   const fetchArticles = async () => {
@@ -41,9 +44,15 @@ const ArticlesList = (props) => {
       }
       const body = await response.json()
       setArticles([...articles, body.article])
+      setRedirectId(body.article.id)
+      setShouldRedirect(true)
     } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
     }
+  }
+
+  if (shouldRedirect) {
+    return <Redirect to={`/articles/${redirectId}`} />
   }
 
   const articleTiles = articles.map((article) => {
@@ -58,7 +67,7 @@ const ArticlesList = (props) => {
   })
 
   return (
-    <div className="row">
+    <div className="grid-container">
       <div className="small-8 small-centered columns">
         <h1>My Blog!</h1>
         <hr />
