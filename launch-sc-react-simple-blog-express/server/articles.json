@@ -1,0 +1,14 @@
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "JavaScript Promises",
+      "content": "Don't make Promises you can't resolve!"
+    },
+    {
+      "id": 2,
+      "title": "Just Harry Potter Things...",
+      "content": "Something something muggle. Something something hufflepuff."
+    }
+  ]
+}

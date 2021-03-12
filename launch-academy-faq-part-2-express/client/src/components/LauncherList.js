@@ -23,12 +23,18 @@ const LauncherList = (props) => {
   }, [])
 
   const launcherList = launchers.map((launcher) => {
-    return <li key={launcher.id}>{launcher.name}</li>
+    return (
+      <li>
+        <Link to={`/launchers/${launcher.id}`} key={launcher.id}>
+          {launcher.name}
+        </Link>
+      </li>
+    )
   })
 
   return (
     <div>
-      <ul>{launcherList}</ul>
+      <ul className="vertical menu">{launcherList}</ul>
       <Link to="/">Home</Link>
     </div>
   )

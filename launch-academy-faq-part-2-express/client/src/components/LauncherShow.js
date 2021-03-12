@@ -23,7 +23,7 @@ const LauncherShow = (props) => {
   }, [])
 
   return (
-    <div>
+    <div className="card">
       <h1>{launcher.name}</h1>
       <p>{launcher.bio}</p>
     </div>
