@@ -1,14 +1,1 @@
-{
-  "articles": [
-    {
-      "id": 1,
-      "title": "JavaScript Promises",
-      "content": "Don't make Promises you can't resolve!"
-    },
-    {
-      "id": 2,
-      "title": "Just Harry Potter Things...",
-      "content": "Something something muggle. Something something hufflepuff."
-    }
-  ]
-}
+{"articles":[{"id":1,"title":"JavaScript Promises","content":"Don't make Promises you can't resolve!"},{"id":2,"title":"Just Harry Potter Things...","content":"Something something muggle. Something something hufflepuff."},{"id":3,"title":"sdafsdef","content":"sdfsdf"},{"id":4,"title":"sadf","content":"sadf"},{"id":5,"title":"asdf","content":"asdf"},{"id":6,"title":"3432","content":"3223"},{"id":7,"title":"asdf","content":"sadf"},{"id":8,"title":"werwerwqwr","content":"sdfasd"},{"id":9,"title":"asdf","content":"sadf"}]}

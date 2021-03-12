@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect, useState } from "react"
 
 const ArticleShow = (props) => {
-  const [article, setArticle] = useState({ title: "", content: "" })
+  const [article, setArticle] = useState({})
 
   const fetchArticle = async () => {
     let id = props.match.params.id

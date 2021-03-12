@@ -12,8 +12,7 @@ const ArticlesList = (props) => {
       const response = await fetch("/api/v1/articles")
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`
-        const error = new Error(errorMessage)
-        throw error
+        throw new Error(errorMessage)
       }
       const body = await response.json()
       setArticles(body.articles)
@@ -36,11 +35,16 @@ const ArticlesList = (props) => {
         body: JSON.stringify(formPayload),
       })
       if (!response.ok) {
+        // if (response.status === 422) {
+          // const body = await response.json()
+          // return setErrors(body.errors)
+        // }
         const errorMessage = `${response.status} (${response.statusText})`
         throw new Error(errorMessage)
       }
       const body = await response.json()
-      setArticles([...articles, body.article])
+      // setErrors({})
+      setArticles([...articles, body.articles])
     } catch (err) {
       console.error(`Error in fetch: ${err.message}`)
     }
