@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS books (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  author VARCHAR(255) NOT NULL,
+  page_count INTEGER NOT NULL,
+  description TEXT,
+  fiction BOOLEAN
+);
+CREATE TABLE IF NOT EXISTS reading_notes (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  body VARCHAR(255) NOT NULL,
+  date DATE DEFAULT NOW(),
+  book_id INTEGER REFERENCES books (id)
+);

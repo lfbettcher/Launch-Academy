@@ -1,0 +1,11 @@
+<h1>Memorable Quotes</h1>
+
+<table>
+  {{#each quotes }}
+  <tr>
+    <td>{{ this.quote }}</td>
+    <td>{{ this.author }}</td>
+    <td>{{ this.subject }}</td>
+  </tr>
+  {{/each}}
+</table>

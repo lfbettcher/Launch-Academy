@@ -16,5 +16,4 @@ const App = (props) => {
   )
 }
 
-// export default hot(App)
-export default App
+export default hot(App)
