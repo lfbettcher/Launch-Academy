@@ -7,3 +7,6 @@ package-lock.json
 .vscode/
 .idea/
 0-keeper-app
+adopt-a-pet/
+git-demo/
+branching-demo/
