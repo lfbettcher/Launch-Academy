@@ -6,6 +6,7 @@ package-lock.json
 .prettierrc
 .vscode/
 .idea/
+out/
 0-keeper-app
 adopt-a-pet/
 git-demo/
