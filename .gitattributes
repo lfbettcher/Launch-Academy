@@ -1,3 +1,2 @@
-_settings.scss linguist-vendored
-world.sql linguist-vendored
+**/foundation/_settings.scss linguist-vendored
 database-aggregations/world.sql linguist-vendored
