@@ -1,2 +1,3 @@
 _settings.scss linguist-vendored
 world.sql linguist-vendored
+database-aggregations/world.sql linguist-vendored
