@@ -10,9 +10,10 @@ public class ShoutDetector {
       String userInput = sc.nextLine();
       System.out.printf("You said: %s\n", userInput);
 
-      if (userInput.contains("!?!?")) {
+      if (userInput.split("!\\?", -1).length > 2) {
         System.out.println("I don't respond to inflammatory questions");
-      } else if (userInput.equals(userInput.toUpperCase()) || userInput.contains("!!")) {
+      } else if (userInput.equals(userInput.toUpperCase())
+          || userInput.chars().filter(ch -> ch == '!').count() > 1) {
         System.out.println("Please stop yelling at me.");
       } else {
         System.out.println("Ok, thanks.");
