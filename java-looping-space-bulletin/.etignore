@@ -1,2 +1,4 @@
 # Files to ignore when uploading to Launch
 java-looping-space-bulletin.md
+java-looping-space-bulletin.iml
+out/

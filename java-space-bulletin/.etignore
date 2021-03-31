@@ -1,2 +1,4 @@
 # Files to ignore when uploading to Launch
 java-space-bulletin.md
+java-space-bulletin.iml
+out/
