@@ -45,11 +45,6 @@ public class BankAccount {
     return CONSOLE.nextDouble();
   }
 
-  public static boolean getYesNo(String prompt) {
-    System.out.println(prompt);
-    return false;
-  }
-
   public static void processFile(File file) throws IOException {
     Scanner scFile = new Scanner(file);
     double balance = 0.0;
