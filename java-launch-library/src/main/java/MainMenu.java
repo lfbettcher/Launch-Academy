@@ -1,16 +1,18 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainMenu {
-
-  public static final String ADD_BOOK_TEXT = "Contribute a book";
-  public static final String CHECKOUT_TEXT = "Check out a book";
-  public static final String RETURN_BOOK_TEXT = "Return a book";
+  public static final String CONTRIBUTE_TEXT = "Add a Book";
+  public static final String CHECKOUT_TEXT = "Check out a Book";
+  public static final String RETURN_TEXT = "Return a Book";
   public static final String QUIT_TEXT = "Quit";
 
   public enum MenuOption {
-    a(ADD_BOOK_TEXT),
+
+    a(CONTRIBUTE_TEXT),
     c(CHECKOUT_TEXT),
-    r(RETURN_BOOK_TEXT),
+    r(RETURN_TEXT),
     q(QUIT_TEXT);
 
     private String optionText;
@@ -20,40 +22,57 @@ public class MainMenu {
     }
 
     public String toString() {
-      return this.name() + ". " + this.optionText;
+      return this.name() + ") " + this.optionText + "\n";
     }
   }
 
-  @Override
   public String toString() {
-    String output = "";
-    for (MenuOption option : MenuOption.values()) {
-      output += option.toString() + "\n";
+    String output = "MAIN MENU\n\n";
+    for(MenuOption option : MenuOption.values()) {
+      output += option.toString();
     }
     return output;
   }
 
-  public void promptUntilQuit(Scanner console) {
-    System.out.println(this.toString());
-    MenuOption input = null;
+  public static List<Book> getInitialBooksFromLibrary() {
+    List<Book> books = new ArrayList<Book>();
+    books.add(new Book("The Little Prince"));
+    books.add(new Book("Tale of Two Cities"));
+    return books;
+  }
+
+  public static void promptUntilQuit() {
+    // welcome the user to the library
+    System.out.println("Welcome to the Library!");
+    // list out their options
+    MainMenu menu = new MainMenu();
+
+    List<Book> booksInLibrary = MainMenu.getInitialBooksFromLibrary();
+
+    // prompt the user to make a selection
+    MenuOption selectedOption = null;
     do {
-      System.out.print("> ");
+      System.out.println(menu.toString());
+      Scanner scanner = new Scanner(System.in);
       try {
-        input = MenuOption.valueOf(console.next());
-      } catch (IllegalArgumentException error) {
-        System.out.println("Please make a valid selection!");
+        selectedOption = MenuOption.valueOf(scanner.next());
+      }
+      catch(IllegalArgumentException exception) {
+        System.out.println("That isn't a valid menu option. Please try again");
       }
 
-      if (input == MenuOption.a) {
-        //allow the user to add a book to the library
-      } else if (input == MenuOption.c) {
-        //allow the user to check out a book from the library
-      } else if (input == MenuOption.r) {
-        //allow the user to return a book to the library
+      if(selectedOption == MenuOption.c) {
+        if (booksInLibrary.size() == 0) {
+          System.out.println("Sorry, there are no books in the library.");
+        } else {
+          CheckoutMenu checkoutMenu = new CheckoutMenu(booksInLibrary);
+          checkoutMenu.promptUntilDone();
+        }
       }
 
-    } while (input != MenuOption.q);
-    System.out.println("Thanks! Come to the library again.");
-//    scanner.close();
+    } while (selectedOption != MenuOption.q);
+
+    System.out.println("Thanks for stopping by!");
+
   }
 }
