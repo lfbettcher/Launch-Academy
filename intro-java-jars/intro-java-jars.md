@@ -87,6 +87,9 @@ Let's break down our `jar` command a bit.
 Let's take a look at the manifest file (`META-INF/MANIFEST.MF`) that was generated when we specified our JAR entry point.
 
 ```no-highlight
+jar xf HelloWorld.jar  // running this again to ensure we have the updates from our `cfe` above`.
+cat META-INF/MANIFEST.MF
+
 Manifest-Version: 1.0
 Created-By: 11.0.3 (Oracle Corporation)
 Main-Class: HelloWorld

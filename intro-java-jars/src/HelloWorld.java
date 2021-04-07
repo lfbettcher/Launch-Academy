@@ -1,5 +1,4 @@
 public class HelloWorld {
-
   public static final String MESSAGE = "Hello from a JAR file";
 
   public static void main(String[] args) {
