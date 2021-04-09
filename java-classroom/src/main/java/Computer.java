@@ -14,6 +14,10 @@ public class Computer {
     return this.availableMemoryMb;
   }
 
+  public void setAvailableMemoryMb(int availableMemoryMb) {
+    this.availableMemoryMb = availableMemoryMb;
+  }
+
   public int getAvailableDiskSpaceMb() {
     return this.availableDiskSpaceMb;
   }
@@ -24,5 +28,15 @@ public class Computer {
 
   public void assignTo(Student student) {
     this.currentStudent = student;
+  }
+
+  public String toString() {
+    StringBuilder computerInfo = new StringBuilder();
+    if (this.currentStudent != null) {
+      computerInfo.append("Assigned To: ").append(this.currentStudent.getFullName()).append(".");
+    } else {
+      computerInfo.append("Not Assigned.");
+    }
+    return computerInfo.toString();
   }
 }

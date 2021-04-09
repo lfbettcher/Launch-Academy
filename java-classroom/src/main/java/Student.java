@@ -22,6 +22,10 @@ public class Student {
     return this.email;
   }
 
+  public String getFullName() {
+    return this.firstName + " " + this.lastName;
+  }
+
   public String getDirectoryEntry() {
     return this.lastName + ", " + this.firstName + ", " + this.email;
   }
