@@ -25,21 +25,21 @@ public class StarWars {
     charScan.close();
     System.out.println(characterList);
 
-    System.out.println("Add more people to the list, and get rid of Han");
+    System.out.println("\nAdd more people to the list, and get rid of Han");
     characterList.add("Biggs");
     characterList.add("Wedge");
     characterList.add(characterList.indexOf("Leia"), "Darth Vader");
     characterList.remove("Han");
     System.out.println(characterList);
 
-    System.out.println("Convert to a HashMap");
+    System.out.println("\nConvert to a HashMap");
     Map<String, String> characterMap = new HashMap<>();
     for (String name : characterList) {
       characterMap.put(name, "Unknown");
     }
     System.out.println(characterMap);
 
-    System.out.println("Star wars fans are picky! Update to have the correct last names");
+    System.out.println("\nStar wars fans are picky! Update to have the correct last names");
     File lastNamesJson = new File(DIR + "last-names.json");
     ObjectMapper mapper = new ObjectMapper();
     Map<String, String> nameMap = new HashMap<>();
@@ -53,11 +53,12 @@ public class StarWars {
     }
     System.out.println(characterMap);
 
-    System.out.println("Parting is such sweet sorrow");
+    System.out.println("\nParting is such sweet sorrow");
     characterMap.remove("Obi-Wan");
     System.out.println(characterMap);
 
-    System.out.println("Pick a letter, any letter");
+    System.out.println("\nPick a letter, any letter");
+    System.out.println("Last names for characters whose first names contain an \"L\":");
     for (String firstName : characterMap.keySet()) {
       if (firstName.contains("L")) {
         System.out.println(characterMap.get(firstName));
@@ -65,54 +66,37 @@ public class StarWars {
     }
     for (Map.Entry<String, String> name : characterMap.entrySet()) {
       if ("Antilles".equals(name.getValue())) {
-        System.out.println(name.getKey());
+        System.out.println("Key for \"Antilles\": " + name.getKey());
       }
     }
 
     /* Exceeds */
     File charactersJson = new File(DIR + "characters.json");
-    List<SWCharacter> charObjList = new ArrayList<>();
+    List<SWCharacter> characterObjList = new ArrayList<>();
     try {
-      charObjList = Arrays.asList(mapper.readValue(charactersJson, SWCharacter[].class));
+      characterObjList = Arrays.asList(mapper.readValue(charactersJson, SWCharacter[].class));
     } catch (IOException io) {
       io.printStackTrace();
     }
 
-    System.out.println("Create an ArrayList for all the Characters with Blue Eyes");
-    List<String> charsWithBlueEyes = charactersWithBlueEyes(charObjList);
-    System.out.println(charsWithBlueEyes);
+    System.out.println("\nCreate an ArrayList for all the Characters with Blue Eyes");
+    List<String> charactersWithBlueEyesList = charactersWithBlueEyes(characterObjList);
+    System.out.println(charactersWithBlueEyesList);
 
-    System.out.println("Create a HashMap of Each Character's Birth Year");
-    Map<String, String> characterBirthYearMap = charactersBirthYear(charObjList);
+    System.out.println("\nCreate a HashMap of Each Character's Birth Year");
+    Map<String, String> characterBirthYearMap = charactersBirthYear(characterObjList);
     System.out.println(characterBirthYearMap);
+    System.out.println(
+        "Biggs Darklighter's birth year: " + characterBirthYearMap.get("Biggs Darklighter"));
 
-    System.out.println("Counts of Each Specified Gender");
-    showGenderCount(charObjList);
+    System.out.println("\nCounts of Each Specified Gender");
+    showGenderCount(characterObjList);
 
-    System.out.println("Hex-Colors for Eye Colors");
-    File hexColorsJson = new File(DIR + "hex-colors.json");
-    Map<String, String> hexColorMap = new HashMap<>();
-    try {
-      hexColorMap = mapper.readValue(hexColorsJson, HashMap.class);
-    } catch (IOException io) {
-      io.printStackTrace();
-    }
-    for (SWCharacter character : charObjList) {
-      String hexColor = hexColorMap.get(character.getEyeColor());
-      character.setEyeColorHexValue(hexColor);
-    }
+    // Hex-Colors for Eye Colors
+    hexColorsForEyeColors(characterObjList, "hex-colors.json");
 
     // Write New JSON to File
-    String newFileName = "modified_characters.json";
-    File modifiedCharactersFile = new File(DIR + newFileName);
-    DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
-    prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
-    try {
-      mapper.writer(prettyPrinter).writeValue(modifiedCharactersFile, charObjList);
-    } catch (IOException io) {
-      io.printStackTrace();
-    }
-    System.out.println(newFileName + " written!");
+    writeJsonFile(characterObjList, "modified_characters.json");
   }
 
   private static List<String> charactersWithBlueEyes(List<SWCharacter> characterList) {
@@ -148,5 +132,33 @@ public class StarWars {
       }
     }
     System.out.printf("male: %d\nn/a: %d\nfemale: %d\n", maleCount, naCount, femaleCount);
+  }
+
+  private static void hexColorsForEyeColors(List<SWCharacter> characterList, String fileName) {
+    File hexColorsJson = new File(DIR + fileName);
+    Map<String, String> hexColorMap = new HashMap<>();
+    ObjectMapper mapper = new ObjectMapper();
+    try {
+      hexColorMap = mapper.readValue(hexColorsJson, HashMap.class);
+    } catch (IOException io) {
+      io.printStackTrace();
+    }
+    for (SWCharacter character : characterList) {
+      String hexColor = hexColorMap.get(character.getEyeColor());
+      character.setEyeColorHexValue(hexColor);
+    }
+  }
+
+  private static void writeJsonFile(List<SWCharacter> characterList, String fileName) {
+    File writeFile = new File(DIR + fileName);
+    ObjectMapper mapper = new ObjectMapper();
+    DefaultPrettyPrinter prettyPrinter = new DefaultPrettyPrinter();
+    prettyPrinter.indentArraysWith(DefaultIndenter.SYSTEM_LINEFEED_INSTANCE);
+    try {
+      mapper.writer(prettyPrinter).writeValue(writeFile, characterList);
+    } catch (IOException io) {
+      io.printStackTrace();
+    }
+    System.out.println("\nDone writing new file: " + fileName);
   }
 }
