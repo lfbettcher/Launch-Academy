@@ -1,3 +1,4 @@
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultIndenter;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -5,7 +6,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -78,7 +78,7 @@ public class StarWars {
     File charactersJson = new File(DIR + "characters.json");
     List<SWCharacter> characterObjList = new ArrayList<>();
     try {
-      characterObjList = Arrays.asList(mapper.readValue(charactersJson, SWCharacter[].class));
+      characterObjList = mapper.readValue(charactersJson, new TypeReference<List<SWCharacter>>(){});
     } catch (IOException io) {
       io.printStackTrace();
     }
