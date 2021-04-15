@@ -15,14 +15,18 @@ public class StarWars {
 
   private static final String DIR = "src/main/resources/";
 
-  public static void main(String[] args) throws FileNotFoundException {
+  public static void main(String[] args) {
     System.out.println("Create an ArrayList of All of the Character Names");
-    Scanner charScan = new Scanner(new File(DIR + "characters.txt"));
     List<String> characterList = new ArrayList<>();
-    while (charScan.hasNextLine()) {
-      characterList.add(charScan.nextLine());
+    try {
+      Scanner charScan = new Scanner(new File(DIR + "characters.txt"));
+      while (charScan.hasNextLine()) {
+        characterList.add(charScan.nextLine());
+      }
+      charScan.close();
+    } catch (FileNotFoundException e) {
+      e.printStackTrace();
     }
-    charScan.close();
     System.out.println(characterList);
 
     System.out.println("\nAdd more people to the list, and get rid of Han");
