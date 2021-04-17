@@ -10,12 +10,8 @@ public class Main {
     EntityManager em = emf.createEntityManager();
 
     try {
-      Author author = new Author();
-      author.setFirstName("James");
-      author.setLastName("SA Corey");
-      em.getTransaction().begin();
-      em.persist(author);
-      em.getTransaction().commit();
+      // our database interactions can go here
+      System.out.println("printed");
     } finally {
       em.close();
       emf.close();
