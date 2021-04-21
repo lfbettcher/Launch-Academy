@@ -5,29 +5,36 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 
 @Entity
-@Table(name="contacts")
+@Table(name = "contacts")
 public class Contact {
+
   @Id
-  @SequenceGenerator(name="contact_generator", sequenceName="contacts_id_seq", allocationSize = 1)
-  @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="contact_generator")
-  @Column(name="id", nullable=false, unique=true)
+  @SequenceGenerator(name = "contact_generator", sequenceName = "contacts_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contact_generator")
+  @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @Column(name="first_name", nullable = false)
+  @NotNull(message = "can't be blank")
+  @Column(name = "first_name", nullable = false)
   private String firstName;
 
-  @Column(name="last_name", nullable = false)
+  @NotNull(message = "can't be blank")
+  @Column(name = "last_name", nullable = false)
   private String lastName;
 
-  @Column(name="email", nullable = false)
+  @NotNull
+  @Email
+  @Column(name = "email", nullable = false)
   private String email;
 
-  @Column(name="phone_number", nullable = false)
+  @NotNull
+  @Length(min = 10)
+  @Column(name = "phone_number", nullable = false)
   private String phoneNumber;
 
   public Integer getId() {

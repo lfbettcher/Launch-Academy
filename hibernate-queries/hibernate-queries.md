@@ -20,6 +20,8 @@ idea .
 
 We're going back to the movies! For this walkthrough, we'll be using our existing Movies database from the `database-drills` exercise. If `psql movies` yields no existing database, run the following commands to re-create it:
 
+***Note: Run these commands one at a time to ensure each finishes correctly.***
+
 ```sql
 createdb movies
 curl -o movie_database.sql.gz https://s3.amazonaws.com/launchacademy-downloads/movie_database.sql.gz

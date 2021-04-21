@@ -16,7 +16,7 @@ idea .
 
 ## The Key to Lasting Relationships
 
-Recall that in our exploration of relational databases, we can have one-to-many relationships, and one-to-one relationships. Leveraging these relationships among tables allows us to eliminate duplication and to keep our data well-normalized. When the JPA was designed, the existence of database relationships was a first-order concern through the concept of _associations_. So, let's mirror a database relationship in our Java entities.
+Recall that in our exploration of relational databases, we can have one-to-one, one-to-many, and many to many relationships. Leveraging these relationships among tables allows us to eliminate duplication and to keep our data well-normalized. When the JPA was designed, the existence of database relationships was a first-order concern through the concept of _associations_. So, let's mirror a database relationship in our Java entities.
 
 For this article, we'll discuss associations in the context of a blogging website. Consider the following ER diagram while we build this out:
 
@@ -367,16 +367,12 @@ Here's what your `Article` class should look like now:
 
 ```java
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;

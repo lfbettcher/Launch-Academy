@@ -31,32 +31,43 @@ Just like we reflect our columns via Java fields, we can similarly map our data 
 We'll need to add the validation library as a dependency in our `pom.xml`.
 
 ```xml
-<dependency>
-  <groupId>javax.validation</groupId>
-  <artifactId>validation-api</artifactId>
-  <version>2.0.0.Final</version>
-</dependency>
-<dependency>
-  <groupId>org.hibernate.validator</groupId>
-  <artifactId>hibernate-validator</artifactId>
-  <version>6.0.2.Final</version>
-</dependency>
-<dependency>
-  <groupId>org.hibernate.validator</groupId>
-  <artifactId>hibernate-validator-annotation-processor</artifactId>
-  <version>6.0.2.Final</version>
-</dependency>
-<dependency>
-  <groupId>javax.el</groupId>
-  <artifactId>javax.el-api</artifactId>
-  <version>3.0.0</version>
-</dependency>
-
-<dependency>
-  <groupId>org.glassfish.web</groupId>
-  <artifactId>javax.el</artifactId>
-  <version>2.2.6</version>
-</dependency>
+<dependencies>
+  <dependency>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.8.1</version>
+  </dependency>
+  <dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.4.2.Final</version>
+  </dependency>
+  <dependency>
+    <groupId>org.hibernate.validator</groupId>
+    <artifactId>hibernate-validator</artifactId>
+    <version>7.0.0.Final</version>
+  </dependency>
+  <dependency>
+    <groupId>org.postgresql</groupId>
+    <artifactId>postgresql</artifactId>
+    <version>42.2.5</version>
+  </dependency>
+  <dependency>
+    <groupId>javax.validation</groupId>
+    <artifactId>validation-api</artifactId>
+    <version>2.0.1.Final</version>
+  </dependency>
+  <dependency>
+    <groupId>javax.el</groupId>
+    <artifactId>javax.el-api</artifactId>
+    <version>3.0.1-b06</version>
+  </dependency>
+  <dependency>
+    <groupId>org.glassfish</groupId>
+    <artifactId>javax.el</artifactId>
+    <version>3.0.1-b12</version>
+  </dependency>
+</dependencies>
 ```
 
 ## What Happens Without Validations
