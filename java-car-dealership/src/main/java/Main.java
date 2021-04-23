@@ -5,7 +5,6 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -28,7 +27,7 @@ public class Main {
     List<String> options = new ArrayList<String>();
     options.add(ADD_CAR);
     options.add(LIST_CARS);
-//    options.add(SEARCH_CARS);
+    options.add(SEARCH_CARS);
     options.add(EXIT);
 
     String menuChoice = "";
@@ -58,8 +57,10 @@ public class Main {
       if (menuChoice == ADD_CAR) {
         addCar(em);
       } else if (menuChoice == LIST_CARS) {
-        List<Car> carList = getCarList(em);
-        showCars(carList);
+        List<Car> carList = CarMenu.getCarList(em);
+        CarMenu.showCars(carList);
+      } else if (menuChoice == SEARCH_CARS) {
+        CarMenu.menu(em);
       }
     }
     em.close();
@@ -82,15 +83,13 @@ public class Main {
 
     System.out.println("What is the make?");
     String carMake = inputScanner.nextLine();
-
-    System.out.println("What is the asking price? (500 to 50,000)");
-    while (!inputScanner.hasNextDouble()) {
-      if (!inputScanner.nextLine().isBlank()) {
-        System.out.println("Please enter a number (500 to 50,000)");
-      }
+    while (carMake.isBlank()) {
+      System.out.println("Car make cannot be blank");
+      carMake = inputScanner.nextLine();
     }
-    double carAskingPrice = inputScanner.nextDouble();
-    inputScanner.nextLine();
+
+    System.out.println("What is the asking price? (500 to 50000)");
+    double carAskingPrice = CarMenu.getDoublePrice(inputScanner);
 
     System.out.println("What is the model?");
     String carModel = inputScanner.nextLine();
@@ -99,22 +98,17 @@ public class Main {
     ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
     Validator validator = validatorFactory.getValidator();
     try {
-      // create car
-      Car newCar = new Car();
-      newCar.setVin(carVin);
-      newCar.setYear(carYear);
-      newCar.setMake(carMake);
-      newCar.setAskingPrice(carAskingPrice);
-      newCar.setModel(carModel);
+      Make make = CarMenu.getMake(em, carMake);
+      Car newCar = new Car(carVin, carYear, carAskingPrice, carModel, make);
       // validate entity
       Set<ConstraintViolation<Car>> violations = validator.validate(newCar);
-      boolean uniqueVin = vinIsUnique(em, carVin);
+      boolean uniqueVin = CarMenu.vinIsUnique(em, carVin);
       if (violations.isEmpty() && uniqueVin) {
         // persist car
         em.getTransaction().begin();
         em.persist(newCar);
         em.getTransaction().commit();
-        System.out.println("Car added!\n");
+        System.out.println("Car " + newCar + " added!\n");
         return true;
       } else if (!uniqueVin) {
         System.out.printf("VIN: %s has already been added\n", carVin);
@@ -129,27 +123,4 @@ public class Main {
     return false;
   }
 
-  public static boolean vinIsUnique(EntityManager em, String vin) {
-    String vinCheck = "SELECT c FROM Car c WHERE vin = :vin";
-    TypedQuery<Car> vinCheckQuery = em.createQuery(vinCheck, Car.class);
-    vinCheckQuery.setParameter("vin", vin);
-    List<Car> carList = vinCheckQuery.setMaxResults(1).getResultList();
-    return carList.isEmpty();
-  }
-
-  private static List<Car> getCarList(EntityManager em) {
-    TypedQuery<Car> query = em
-        .createQuery("SELECT c FROM Car c ORDER BY asking_price DESC", Car.class);
-    return query.getResultList();
-  }
-
-  public static void showCars(List<Car> carList) {
-    if (carList.isEmpty()) {
-      System.out.println("There are no cars in the database");
-      return;
-    }
-    for (Car car : carList) {
-      System.out.println(car);
-    }
-  }
 }

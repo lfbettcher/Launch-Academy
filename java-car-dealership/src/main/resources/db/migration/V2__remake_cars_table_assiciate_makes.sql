@@ -1,0 +1,19 @@
+DROP TABLE IF EXISTS cars;
+
+CREATE TABLE makes (
+  id BIGSERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE UNIQUE INDEX makes_name_index ON makes(name);
+
+CREATE TABLE cars (
+  id BIGSERIAL PRIMARY KEY,
+  vin VARCHAR(20) NOT NULL,
+  year INTEGER NOT NULL,
+  make_id BIGINT NOT NULL REFERENCES makes(id),
+  asking_price DECIMAL NOT NULL,
+  model VARCHAR(255) NOT NULL
+);
+
+CREATE UNIQUE INDEX cars_vin_index ON cars(vin);

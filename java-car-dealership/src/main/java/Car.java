@@ -3,9 +3,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
 
@@ -28,10 +31,6 @@ public class Car {
   @Column(name = "year", nullable = false)
   private Integer year;
 
-  @NotBlank
-  @Column(name = "make", nullable = false)
-  private String make;
-
   @Range(min = 500, max = 50000)
   @Column(name = "asking_price", nullable = false)
   private Double askingPrice;
@@ -40,11 +39,32 @@ public class Car {
   @Column(name = "model", nullable = false)
   private String model;
 
-  @Override
-  public String toString() {
-    return String.format(
-        "VIN: %s, make: %s, model: %s, year: %d, asking price: $%.2f",
-        this.vin, this.make, this.model, this.year, this.askingPrice);
+  @NotNull
+  @ManyToOne
+  @JoinColumn(name = "make_id")
+  private Make make;
+
+  public Car() {
+  }
+
+  public Car(String vin, Integer year, Double askingPrice, String model, Make make) {
+    this.vin = vin;
+    this.year = year;
+    this.askingPrice = askingPrice;
+    this.model = model;
+    this.make = make;
+  }
+
+  public Car(String vin, Integer year, Double askingPrice, String model) {
+    this(vin, year, askingPrice, model, null);
+  }
+
+  public Make getMake() {
+    return this.make;
+  }
+
+  public void setMake(Make make) {
+    this.make = make;
   }
 
   public Long getId() {
@@ -71,14 +91,6 @@ public class Car {
     this.year = year;
   }
 
-  public String getMake() {
-    return this.make;
-  }
-
-  public void setMake(String make) {
-    this.make = make;
-  }
-
   public Double getAskingPrice() {
     return this.askingPrice;
   }
@@ -94,4 +106,12 @@ public class Car {
   public void setModel(String model) {
     this.model = model;
   }
+
+  @Override
+  public String toString() {
+    return String.format(
+        "VIN: %s, make: %s, model: %s, year: %d, asking price: $%.2f",
+        this.vin, this.make, this.model, this.year, this.askingPrice);
+  }
+
 }
