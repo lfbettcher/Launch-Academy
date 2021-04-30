@@ -1,7 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="breed" value="${requestScope.breed}" />
+<c:set var="dogs" value="${requestScope.dogs}" />
+<c:set var="sessionDog" value="${requestScope.sessionDog}" />
 
 <c:choose>
+  <c:when test="${not empty breed}">
+    <h1><c:out value="All ${breed.name}s" /></h1>
+  </c:when>
   <c:when test="${not empty sessionDog}">
     <h1>Find Friends for <c:out value="${sessionDog.firstName}" /></h1>
   </c:when>

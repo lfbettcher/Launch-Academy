@@ -18,7 +18,7 @@ public class BreedService {
     try {
       List<Breed> breedList = em
           .createQuery("SELECT b from Breed b WHERE name = :name", Breed.class)
-          .setParameter("name", breedName).setMaxResults(1).getResultList();
+          .setParameter("name", breedName).getResultList();
       if (breedList.isEmpty()) {
         // Breed doesn't exist yet, add Breed
         breed = new Breed(breedName);

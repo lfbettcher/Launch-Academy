@@ -1,5 +1,6 @@
 package com.launchacademy.dogbook.controllers;
 
+import com.launchacademy.dogbook.models.Breed;
 import com.launchacademy.dogbook.models.Dog;
 import com.launchacademy.dogbook.services.BreedService;
 import com.launchacademy.dogbook.services.DogService;
@@ -24,19 +25,39 @@ public class DogsController extends HttpServlet {
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
     if (req.getServletPath().equals("/dogs")) {
-      // get list of all dogs
       EntityManagerFactory emf = getEmf();
       EntityManager em = emf.createEntityManager();
-      DogService dogService = new DogService(em);
-
-      List<Dog> dogs = dogService.findAll();
-      req.setAttribute("dogs", dogs);
-
-      // custom headline
-      req.setAttribute("sessionDog", req.getSession().getAttribute("newDog"));
-      RequestDispatcher dispatcher = req.getRequestDispatcher("/views/dogs/index.jsp");
-      dispatcher.forward(req, resp);
-      em.close();
+      try {
+        // check breed query parameter
+        String breed = req.getParameter("breed");
+        if (breed != null && !breed.isBlank()) {
+          BreedService breedService = new BreedService(em);
+          Breed breedObj = breedService.getBreed(breed);
+          if (breedObj != null) {
+            List<Dog> dogs = breedObj.getDogs();
+            req.setAttribute("breed", breedObj);
+            req.setAttribute("dogs", dogs);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/views/dogs/index.jsp");
+            dispatcher.forward(req, resp);
+          } else {
+            // breed not found
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+          }
+        } else {
+          // no breed parameter, show all dogs
+          DogService dogService = new DogService(em);
+          List<Dog> dogs = dogService.findAll();
+          req.setAttribute("dogs", dogs);
+          // custom headline if session
+          req.setAttribute("sessionDog", req.getSession().getAttribute("newDog"));
+          RequestDispatcher dispatcher = req.getRequestDispatcher("/views/dogs/index.jsp");
+          dispatcher.forward(req, resp);
+        }
+      } catch (Exception e) {
+        e.printStackTrace();
+      } finally {
+        em.close();
+      }
     } else if (req.getServletPath().equals("/dogs/new")) {
       RequestDispatcher dispatcher = req.getRequestDispatcher("/views/dogs/new.jsp");
       dispatcher.forward(req, resp);
