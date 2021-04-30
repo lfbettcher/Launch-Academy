@@ -16,8 +16,8 @@
     <input type="url" id="photoUrl" name="photoUrl" value="" required />
   </div>
   <div>
-    <label for="breed">Breed</label>
-    <input type="text" id="breed" name="breed" value="" required />
+    <label for="breedName">Breed</label>
+    <input type="text" id="breedName" name="breedName" value="" required />
   </div>
   <div>
     <label for="female">Female</label>
