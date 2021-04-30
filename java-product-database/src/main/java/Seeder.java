@@ -51,8 +51,10 @@ public class Seeder {
     // I want to manage a list of categories
     // So that the products are easier to find
     // Acceptance Criteria:
-    // Create a categories table and populate it on the basis of what is in catalog.json as part of your Seeder routine.
-    // Load categories as you load your products into the database. Use a similar technique to what you implemented above so that duplicate category names are not inserted.
+    // Create a categories table and populate it on the basis of what is in catalog.json as part of
+    // your Seeder routine.
+    // Load categories as you load your products into the database. Use a similar technique to what
+    // you implemented above so that duplicate category names are not inserted.
     // Your products should reference this table in some way.
   }
 }

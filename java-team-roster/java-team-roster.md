@@ -15,7 +15,7 @@ idea .
 
 Don't worry - you don't have to understand the game of curling to complete these requirements.
 
-We have supplied a `League` with relevant `Team` and `Player` data for you to accomplish the user stories below. You will likely have multiple calls to `League.getLeague()` to build the required data.
+We have supplied a `com.launchacademy.rosters.models.League` with relevant `com.launchacademy.rosters.models.Team` and `com.launchacademy.rosters.models.Player` data for you to accomplish the user stories below. You will likely have multiple calls to `com.launchacademy.rosters.models.League.getLeague()` to build the required data.
 
 ## Core User Stories
 
@@ -42,7 +42,7 @@ So that I can learn more about my favorite team
 
 Acceptance Criteria:
 
-- When I navigate to `/team?teamIndex=<index in array>`, I receive details about the team located at that index in the League's list of teams
+- When I navigate to `/team?teamIndex=<index in array>`, I receive details about the team located at that index in the com.launchacademy.rosters.models.League's list of teams
 - I should see the team's name, as well as a list of all of the players and their correlating positions
 - If I attempt to access an index that is out of range for the list of teams, I receive a 404
 
