@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html th:fragment="layout (template)">
+  <head>
+    <title>Space Monkey</title>
+  </head>
+
+  <body>
+    <h1>Starship NCC</h1>
+    <th:block th:include="${template}" />
+  </body>
+  <footer>Great Captain</footer>
+
+</html>

@@ -1,0 +1,16 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+
+  <body>
+    <h1>Teams</h1>
+
+    <div class="teams" th:each="team : ${teams}">
+      <div class="team" th:object="${team}">
+        <ul>
+          <li><a th:href="@{'/teams/' + ${teamStat.index}}" th:text="*{teamName}"></a></li>
+        </ul>
+      </div>
+    </div>
+
+  </body>
+</html>

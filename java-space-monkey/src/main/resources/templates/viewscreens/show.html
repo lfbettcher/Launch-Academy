@@ -1,0 +1,19 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+
+  <body>
+    <div class="viewscreen" th:object="${current}">
+      <dl th:if="*{bananas ge 500}">
+        <dt>Name</dt>
+        <dd th:text="*{name}"></dd>
+        <dt>Role</dt>
+        <dd th:text="*{role}"></dd>
+        <dt>Location</dt>
+        <dd th:text="*{location}"></dd>
+        <dt>Bananas</dt>
+        <dd th:text="*{bananas}"></dd>
+      </dl>
+      <h2 th:if="*{bananas lt 500}"><em>Not enough nanas...</em></h2>
+    </div>
+  </body>
+</html>

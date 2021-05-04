@@ -1,0 +1,21 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+
+  <body>
+    <h1>Viewscreens</h1>
+
+    <div class="viewscreens" th:each="viewscreen : ${viewscreens}">
+      <div class="viewscreen" th:object="${viewscreen}">
+        <dl>
+          <dt>Name</dt>
+          <dd th:text="*{name}"></dd>
+          <dt>Role</dt>
+          <dd th:text="*{role}"></dd>
+          <dt>Location</dt>
+          <dd th:text="*{location}"></dd>
+        </dl>
+      </div>
+    </div>
+
+  </body>
+</html>
