@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html th:fragment="layout (template)">
+
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (template)">
   <head>
     <title>Java Coffee Shop</title>
+    <link rel="stylesheet" href="/css/main.css">
   </head>
   <body>
-    <th:block th:include="${template}"/>
+    <th:block th:include="${template}" />
   </body>
 </html>
