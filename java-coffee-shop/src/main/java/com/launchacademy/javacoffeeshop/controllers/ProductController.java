@@ -5,6 +5,7 @@ import com.launchacademy.javacoffeeshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,5 +45,11 @@ public class ProductController {
     product.setId(productService.findAll().size() + 1);
     productService.addToList(product);
     return "redirect:/products/show/" + product.getId();
+  }
+
+  @DeleteMapping("/show/{productId}")
+  public String deleteProduct(@PathVariable Integer productId) {
+    productService.deleteProduct(productId);
+    return "redirect:/products";
   }
 }

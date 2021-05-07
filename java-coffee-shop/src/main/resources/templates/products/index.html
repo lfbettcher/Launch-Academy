@@ -4,14 +4,12 @@
   <body>
     <h1>Products</h1>
     <a th:href="'/products/new'">Add a New Product</a>
-    <div th:each="product :${products}">
-      <div class="product" th:object="${product}">
-        <h3 th:text="*{name}"></h3>
-        <p th:text="'$' + *{price}"></p>
-        <p th:class="'caffeine-rating-' + *{caffeineRating}"
-           th:text="'Caffeine rating: ' + *{caffeineRating}"></p>
-        <a th:href="'/products/show/'+ *{id}">Show product</a>
-      </div>
+    <div th:each="product : ${products}" class="product" th:object="${product}" th:if="${product}">
+      <h3 th:text="*{name}"></h3>
+      <p th:text="'$' + *{price}"></p>
+      <p th:class="'caffeine-rating-' + *{caffeineRating}"
+         th:text="'Caffeine rating: ' + *{caffeineRating}"></p>
+      <a th:href="'/products/show/'+ *{id}">Show product</a>
     </div>
   </body>
 </html>

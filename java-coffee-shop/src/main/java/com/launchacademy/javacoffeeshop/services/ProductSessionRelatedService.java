@@ -9,6 +9,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @Service
 @SessionScope
 public class ProductSessionRelatedService implements ProductService {
+
   private List<Product> products;
 
   public ProductSessionRelatedService() {
@@ -22,7 +23,6 @@ public class ProductSessionRelatedService implements ProductService {
     product.setPrice(4.99);
     product.setCaffeineRating(1);
     this.products.add(product);
-
 
     product = new Product();
     product.setId(2);
@@ -46,10 +46,14 @@ public class ProductSessionRelatedService implements ProductService {
   }
 
   public Product get(Integer id) {
-    return this.products.get(id-1);
+    return this.products.get(id - 1);
   }
 
   public void addToList(Product product) {
     this.products.add(product);
+  }
+
+  public void deleteProduct(Integer id) {
+    this.products.set(id - 1, null);
   }
 }

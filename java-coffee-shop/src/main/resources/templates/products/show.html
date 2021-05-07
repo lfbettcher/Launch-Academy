@@ -8,7 +8,12 @@
       <b th:class="'caffeine-rating-' + *{caffeineRating}"
          th:text="'Caffeine rating: ' + *{caffeineRating}"></b>
       <p th:text="*{description}"></p>
+
+      <form action="#" th:action="@{'/products/show/' + *{id}}" th:method="delete">
+        <button type="submit">Delete Product</button>
+      </form>
     </div>
+    <br />
     <a href="/products">All Products</a>
   </body>
 </html>
