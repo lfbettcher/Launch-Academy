@@ -4,6 +4,7 @@
   <body>
     <div th:object="${product}">
       <h1 th:text="*{name}"></h1>
+      <p th:text="'$' + *{price}"></p>
       <b th:class="'caffeine-rating-' + *{caffeineRating}"
          th:text="'Caffeine rating: ' + *{caffeineRating}"></b>
       <p th:text="*{description}"></p>
