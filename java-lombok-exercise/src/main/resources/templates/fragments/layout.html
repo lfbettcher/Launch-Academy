@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (template)">
+<head>
+  <title>Thymeleaf Examples</title>
+</head>
+<body>
+  <h1>Thomas the Tank Engine Fansite</h1>
+  <p><a href="/trains">All Trains</a></p>
+  <th:block th:include="${template}"/>
+  <p>Copyright 2020 Tank Engine Cargo Cult</p>
+</body>
+</html>

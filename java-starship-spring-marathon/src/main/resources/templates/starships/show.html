@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body})}">
+  <body>
+    <div class="starship" th:object="${starship}">
+      <h1 th:text="*{name}"></h1>
+      <dl>
+        <dt>Description</dt>
+        <dd class="description" th:text="*{description}"></dd>
+        <dt>Fuel Capacity</dt>
+        <dd th:text="*{fuelCapacity}"></dd>
+        <dd th:text="*{fuelCapacity gt 700 ? 'HIGH' : fuelCapacity lt 300 ? 'LOW' : 'AVERAGE'}"></dd>
+      </dl>
+    </div>
+    <a href="/starships">All Starships</a>
+  </body>
+</html>

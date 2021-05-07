@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body})}">
+  <body>
+    <div th:each="firework : ${fireworks}">
+      <div class="firework" th:object="${firework}">
+        <h2 th:text="*{name}"></h2>
+        <p th:text="*{description}"></p>
+
+<!--        <a th:href="@{/fireworks/{id}(id=*{id})}" th:text="*{name}"></a>-->
+        <a th:href="'/fireworks/' + *{id}">Show firework</a>
+      </div>
+    </div>
+  </body>
+</html>

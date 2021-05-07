@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body})}">
+<head>
+  <title>Thymeleaf Examples</title>
+</head>
+<body>
+  <h1>Trains at <span th:text="${station.name}">Name</span></h1>
+
+  <ul th:each="train : ${trains}">
+    <li th:style="${train.name eq 'Thomas'} ? 'font-weight: bold'">
+      <span th:text="${train.name}">Train Name</span>
+      (<span th:style="'color: ' + ${train.color}" th:text="${train.color}">Color</span>)
+    </li>
+  </ul>
+</body>
+</html>

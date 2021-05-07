@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Thymeleaf Examples</title>
+</head>
+<body>
+
+<a href="/trains">&laquo; All Trains</a>
+
+<h1 th:text="${train.name}">Train Name</h1>
+
+<dl>
+  <dt>Color</dt>
+  <dd th:text="${train.color}">Train Color</dd>
+</dl>
+</body>
+</html>

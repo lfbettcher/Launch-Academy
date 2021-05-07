@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="layout (template)">
+  <head>
+    <title>Fireworks</title>
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <th:block th:include="${template}" />
+  </body>
+</html>

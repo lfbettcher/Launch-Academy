@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <title>Java Product Shop</title>
+  </head>
+  <body>
+    <div th:object="${product}">
+      <h1 th:text="*{name}">Product name</h1>
+      <p th:text="'$' + *{price}">Product price</p>
+      <p th:text="*{description}">Product description</p>
+    </div>
+
+    <a href="/products">See all Products</a>
+    <a href="/products/new">Add a New Product</a>
+  </body>
+</html>

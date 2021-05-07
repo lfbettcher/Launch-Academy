@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <title>Java Product Shop</title>
+  </head>
+  <body>
+    <h1>Product Options</h1>
+
+    <div th:each="product : ${products}">
+      <div th:object="${product}">
+        <h2 th:text="*{name}">Product name</h2>
+        <p th:text="'$' + *{price}">Product price</p>
+        <a th:href="'/products/' + ${product.id}">Learn more</a>
+      </div>
+    </div>
+    <a href="/products/new">Add a New Product</a>
+  </body>
+</html>

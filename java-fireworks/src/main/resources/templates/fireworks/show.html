@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body})}">
+  <body>
+    <div th:object="${firework}">
+      <h1 th:text="*{name}"></h1>
+      <p th:text="*{description}"></p>
+      <!--      th:class="*{loudnessRating gt 2 ? 'loud-3' : loudnessRating lt 2 ? 'loud-1' : 'loud-2'}"-->
+      <p th:class="'loud-' + *{loudnessRating}" th:text="*{loudnessRating}"></p>
+    </div>
+    <a href="/fireworks">All Fireworks</a>
+  </body>
+</html>
