@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Trip Log</h1>
+
+    <div class="trips" th:each="trip : ${trips}">
+      <div class="trip" th:object="${trip}">
+        <h2 th:if="*{not #strings.isEmpty(description)}" th:text="*{description}"></h2>
+        <dl>
+          <dt>Miles Traveled</dt>
+          <dd th:class="*{milesTraveled gt 10}? 'high-miles' : 'low-miles'" th:text="*{milesTraveled}"></dd>
+
+          <dt>Traveled On</dt>
+          <dd th:text="*{traveledOn}"></dd>
+        </dl>
+      </div>
+    </div>
+
+
+    <p><a th:href="@{/new}">&plus; Add a New Trip</a></p>
+  </body>
+</html>

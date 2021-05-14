@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html th:fragment="layout (template)">
+  <head>
+    <title>Thymeleaf</title>
+    <style>
+        .trip .high-miles {
+          color: orange;
+        }
+        .trip .low-miles {
+          color: green;
+        }
+      </style>
+  </head>
+  <body>
+    <th:block th:include="${template}"/>
+  </body>
+</html>

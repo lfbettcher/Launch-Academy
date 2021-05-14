@@ -1,0 +1,28 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+  <body>
+    <h1>Add a New Donut</h1>
+
+    <form action="/donuts" method="POST" th:object="${donut}">
+      <div>
+        <label for="type">Type</label>
+        <input type="text" th:field="*{type}" />
+      </div>
+      <div>
+        <label for="description">Description</label>
+        <input type="text" th:field="*{description}" />
+      </div>
+      <div>
+        <p>Vegan:
+          <label>Yes
+            <input type="radio" th:field="*{vegan}" value="true">
+          </label>
+          <label>No
+            <input type="radio" th:field="*{vegan}" value="false">
+          </label>
+        </p>
+      </div>
+      <div><input type="submit" value="Add Donut" /></div>
+    </form>
+  </body>
+</html>

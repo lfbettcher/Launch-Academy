@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+th:replace="~{fragments/layout :: layout (~{::body})}">
+
+ <body>
+  <h1>Add a New Trip</h1>
+
+  <form action="#" th:action="@{/trips}" th:object="${trip}" method="POST">
+    <div>
+      <label th:for="description">Description</label>
+      <input type="text" th:field="*{description}" />
+    </div>
+
+    <div>
+      <label th:for="milesTraveled">Miles Traveled</label>
+      <input type="number" th:field="*{milesTraveled}" />
+    </div>
+
+    <div>
+      <label th:for="traveledOn">Date and Time of Travel</label>
+      <input type="datetime-local" th:field="*{traveledOn}" />
+    </div>
+
+    <div>
+      <input type="submit" value="Log Trip" />
+    </div>
+  </form>
+ </body>
+</html>

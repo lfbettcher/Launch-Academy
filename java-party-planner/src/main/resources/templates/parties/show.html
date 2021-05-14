@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body})}">
+  <body>
+    <div th:object="${party}">
+      <h1 th:text="*{name}"></h1>
+      <p th:text="*{description}"></p>
+      <p th:text="*{location}"></p>
+    </div>
+    <br />
+    <a href="/parties">All Parties</a>
+  </body>
+</html>

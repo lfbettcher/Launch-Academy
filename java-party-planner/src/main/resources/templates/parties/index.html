@@ -1,0 +1,13 @@
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body})}">
+
+  <body>
+    <h1>Parties Index</h1>
+
+    <ul>
+      <div class="parties" th:each="party : ${parties}" th:object="${party}">
+        <li><a th:href="'/parties/' + *{id}" th:text="*{name}"></a></li>
+      </div>
+    </ul>
+  </body>
+</html>

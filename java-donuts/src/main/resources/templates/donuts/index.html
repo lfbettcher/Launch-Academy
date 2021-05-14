@@ -1,0 +1,15 @@
+<html xmlns:th="https://www.thymeleaf.org"
+th:replace="~{fragments/layout :: layout (~{::body})}">
+
+  <body>
+    <h1>Donuts Index</h1>
+
+    <ul>
+      <div class="donuts" th:each="donut : ${donuts}">
+        <div class="donut" th:object="${donut}">
+          <ul th:text="*{type}"></ul>
+        </div>
+      </div>
+    </ul>
+  </body>
+</html>
