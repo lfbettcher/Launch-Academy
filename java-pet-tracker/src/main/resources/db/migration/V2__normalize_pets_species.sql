@@ -1,0 +1,17 @@
+DROP TABLE IF EXISTS pets;
+
+CREATE TABLE species (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL
+);
+
+CREATE UNIQUE INDEX species_name_index ON species (name);
+
+CREATE TABLE pets (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  species_id INTEGER NOT NULL REFERENCES species(id),
+  breed VARCHAR(255) NOT NULL,
+  age INTEGER NOT NULL,
+  neutered BOOLEAN NOT NULL
+);

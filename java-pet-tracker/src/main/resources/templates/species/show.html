@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body})}">
+  <body>
+    <h1 th:text="${species.name}"></h1>
+    <ul>
+      <div class="pets" th:each="pet : ${pets}" th:object="${pet}">
+<!--        <div class="pet" th:object="${pet}">-->
+          <ul th:text="*{name}"></ul>
+<!--        </div>-->
+      </div>
+    </ul>
+    <br />
+    <a href="/pets">All Pets</a>
+  </body>
+</html>

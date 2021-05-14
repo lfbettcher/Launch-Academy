@@ -3,22 +3,27 @@
   <body>
     <h1>Add a New Pet</h1>
 
-    <form action="/pets" method="POST" th:object="${pet}">
+    <form action="/pets/new" method="POST" th:object="${pet}">
       <div>
-        <label for="name">Name</label>
+        <label th:for="name">Name</label>
         <input type="text" th:field="*{name}" />
+        <p th:errors="*{name}" />
       </div>
       <div>
-        <label for="species">Species</label>
-        <input type="text" th:field="*{species}" />
+        <label th:for="speciesName">Species</label>
+        <input type="text" th:field="*{speciesName}" />
+        <p th:errors="*{speciesName}" />
+        <input type="hidden" th:field="*{species}" th:value="1" />
       </div>
       <div>
-        <label for="breed">Breed</label>
+        <label th:for="breed">Breed</label>
         <input type="text" th:field="*{breed}" />
+        <p th:errors="*{breed}" />
       </div>
       <div>
-        <label for="age">Age</label>
+        <label th:for="age">Age</label>
         <input type="number" th:field="*{age}" />
+        <p th:errors="*{age}" />
       </div>
       <div>
         <p>Neutered:
@@ -29,6 +34,7 @@
             <input type="radio" th:field="*{neutered}" value="false">
           </label>
         </p>
+        <p th:errors="*{neutered}" />
       </div>
       <div><input type="submit" value="Add Pet" /></div>
     </form>
