@@ -69,7 +69,7 @@ public class AdoptablePetSeeder {
       Process process = Runtime.getRuntime().exec(command);
       InputStream inputStream = process.getInputStream();
       String s = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
-      adoptionStory = s.substring(s.indexOf("\"") + 1, s.lastIndexOf("\""));
+      adoptionStory = s.substring(2, s.length() - 2);
       process.destroy();
     } catch (Exception e) {
       adoptionStory = "Story " + sentences;
