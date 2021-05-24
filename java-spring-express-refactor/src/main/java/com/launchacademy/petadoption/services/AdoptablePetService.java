@@ -34,7 +34,9 @@ public class AdoptablePetService {
   public AdoptablePet findByIdMatchType(Integer id, String type) {
     AdoptablePet pet = findById(id);
     PetType petType = pet.getPetType();
-    if (petType.getType().equals(type)) return pet;
+    if (petType.getType().equals(type)) {
+      return pet;
+    }
     throw new UrlNotFoundException();
   }
 

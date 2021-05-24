@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import AdoptionForm from "./AdoptionForm.js"
 import SuccessTile from "./SuccessTile.js"
 
@@ -55,17 +55,21 @@ const AnimalShow = props => {
     whatToShow = <SuccessTile />
   } else {
     whatToShow = (
-        <div>
-          <button onClick={showAdoptionForm} className="button round">
-            Adopt Me!
-          </button>
-          {formDisplay}
-        </div>
+      <div>
+        <button onClick={showAdoptionForm} className="button round">
+          Adopt Me!
+        </button>
+        {formDisplay}
+      </div>
     )
   }
 
   return (
-      <div>
+    <>
+      <div className={`${animal.name && "hidden"}`}>
+        <h1>404</h1>
+      </div>
+      <div className={`${!animal.name && "hidden"}`}>
         <div className="animal-show">
           <h1>{animal.name}</h1>
           <img className="images thumbnail" src={animal.imgUrl} />
@@ -84,6 +88,7 @@ const AnimalShow = props => {
         <br />
         <br />
       </div>
+    </>
   )
 }
 

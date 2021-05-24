@@ -8,12 +8,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "/api/v1")
+@RequestMapping(path = "/api/v1/pets")
 public class PetsApiV1Controller {
 
   private final PetTypeService petTypeService;
@@ -26,17 +25,17 @@ public class PetsApiV1Controller {
     this.adoptablePetService = adoptablePetService;
   }
 
-  @GetMapping("/pets")
+  @GetMapping
   public List<PetType> getPetTypes() {
     return petTypeService.findAll();
   }
 
-  @GetMapping("/pets/{type}")
+  @GetMapping("/{type}")
   public List<AdoptablePet> getPetsOfType(@PathVariable String type) {
     return petTypeService.findByType(type).getAdoptablePets();
   }
 
-  @GetMapping("/pets/{type}/{id}")
+  @GetMapping("/{type}/{id}")
   public AdoptablePet getAdoptablePet(@PathVariable String type, @PathVariable Integer id) {
     return adoptablePetService.findByIdMatchType(id, type);
   }

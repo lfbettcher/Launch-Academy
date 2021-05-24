@@ -1,26 +1,25 @@
 import React from "react"
 import _ from "lodash"
 
-const Error = props => {
-  const errors = Object.keys(props.errors)
-  if (errors.length > 0) {
+const Error = (props) => {
+  const errantFields = Object.keys(props.errors)
+  if (errantFields.length > 0) {
     let index = 0
-    const errorList = errors.map(error => {
+    const listItems = errantFields.map((field) => {
       index++
       return (
-          <li key={index}>
-            {_.startCase(_.camelCase([field]))}: {props.errors[field]}
-          </li>
+        <li key={index}>
+          {_.startCase(_.camelCase(field))}: {props.errors[field]}
+        </li>
       )
     })
     return (
-        <div className="callout alert text-left">
-          <ul className="error">{errorList}</ul>
-        </div>
+      <div className="callout alert">
+        <ul className="no-bullets">{listItems}</ul>
+      </div>
     )
-  } else {
-    return ""
   }
+  return ""
 }
 
 export default Error

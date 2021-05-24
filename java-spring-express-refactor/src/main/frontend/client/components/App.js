@@ -1,6 +1,6 @@
 import React from "react"
 import { hot } from "react-hot-loader/root"
-import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom"
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
 import "regenerator-runtime/runtime"
 import "../public/style.css"
 
@@ -16,7 +16,6 @@ const App = props => {
     <BrowserRouter>
       <NavBar />
       <div className="grid-container no-bullet">
-        {/*<div className="grid-x grid-margin-x text-center">*/}
         <div className="text-center">
           <Switch>
             <Route exact path="/">
@@ -33,4 +32,5 @@ const App = props => {
     </BrowserRouter>
   )
 }
+
 export default hot(App)

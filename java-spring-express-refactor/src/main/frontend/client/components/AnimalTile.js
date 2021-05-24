@@ -1,5 +1,5 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const AnimalTile = props => {
   let vaccinated
@@ -10,21 +10,22 @@ const AnimalTile = props => {
   }
 
   return (
-      <div className="cell">
-        <div className="card">
-          <h2><Link to={`/pets/${props.type}/${props.id}`}>{props.name}</Link>
-          </h2>
-          <Link to={`/pets/${props.type}/${props.id}`}>
-            <img className="images thumbnail" src={props.imgUrl} />
-          </Link>
-          <div className="card-section">
-            <p>
-              <strong>Age:</strong> {props.age} months<br />
-              <strong>Vaccinated:</strong> {vaccinated}
-            </p>
-          </div>
+    <div className="cell">
+      <div className="card">
+        <h2><Link to={`/pets/${props.type}/${props.id}`}>{props.name}</Link>
+        </h2>
+        <Link to={`/pets/${props.type}/${props.id}`}>
+          <img className="images thumbnail" src={props.imgUrl} />
+        </Link>
+        <div className="card-section">
+          <p>
+            <strong>Age:</strong> {props.age} months<br />
+            <strong>Vaccinated:</strong> {vaccinated}
+          </p>
         </div>
       </div>
+    </div>
   )
 }
+
 export default AnimalTile

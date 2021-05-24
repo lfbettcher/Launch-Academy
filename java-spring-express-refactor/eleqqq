@@ -1,7 +1,0 @@
- id |  type  |                                          img_url                                           |              description              
-----+--------+--------------------------------------------------------------------------------------------+---------------------------------------
-  1 | cat    | https://cdn.britannica.com/s:800x1000/22/206222-050-3F741817/Domestic-feline-tabby-cat.jpg | I own you
-  2 | dog    | https://rb.gy/qkiiu0                                                                       | Man's best friend
-  3 | rabbit | https://rb.gy/e4cven                                                                       | Thumper the super cool ski instructor
-(3 rows)
-

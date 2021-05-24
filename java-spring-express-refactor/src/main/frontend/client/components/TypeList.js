@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import TypeTile from "./TypeTile.js"
 
 const TypeList = props => {
@@ -29,9 +29,9 @@ const TypeList = props => {
   })
 
   return (
-      <div className="home">
-        {typeObjects}
-      </div>
+    <div className="home">
+      {typeObjects}
+    </div>
   )
 }
 

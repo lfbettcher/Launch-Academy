@@ -18,11 +18,11 @@ public class PetTypeSeeder {
 
   public void seed() {
     if (this.petTypeService.findAll().size() == 0) {
-      PetType cat = new PetType("cat", "I own you", "https://bit.ly/2Sgcd8A");
-      PetType dog = new PetType("dog", "Man's best friend", "https://rb.gy/qkiiu0");
-      PetType rabbit = new PetType("rabbit", "Thumper the super cool ski instructor",
-          "https://rb.gy/e4cven");
-      for (PetType petType : List.of(cat, dog, rabbit)) {
+      PetType cat = new PetType("cat", "I own you", "https://placekitten.com/298");
+      PetType dog = new PetType("dog", "Man's best friend", "https://placedog.net/298");
+      PetType bear = new PetType("bear", "Mmm, these bearies are so sweet!",
+          "https://placebear.com/300/298");
+      for (PetType petType : List.of(cat, dog, bear)) {
         this.petTypeService.save(petType);
       }
     }

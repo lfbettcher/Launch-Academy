@@ -1,24 +1,27 @@
 package com.launchacademy.petadoption.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Table(name = "pet_types")
 @Getter
 @Setter
+@NoArgsConstructor
 public class PetType {
 
   @Id
@@ -27,20 +30,24 @@ public class PetType {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
+  @NotBlank
   @Column(name = "type", nullable = false)
   private String type;
 
   @Column(name = "description")
   private String description;
 
+  @NotBlank
+  @URL
   @Column(name = "img_url", nullable = false)
   private String imgUrl;
 
-  @JsonIgnore
-  @OneToMany(mappedBy = "petType")
-  private List<AdoptablePet> adoptablePets = new ArrayList<AdoptablePet>();
+  @OneToMany(mappedBy = "petType", cascade = CascadeType.ALL)
+  @JsonIgnoreProperties("petType")
+  private List<AdoptablePet> adoptablePets;
 
-  public PetType() {
+  public PetType(String type) {
+    this.type = type;
   }
 
   public PetType(String type, String description, String imgUrl) {

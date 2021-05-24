@@ -4,16 +4,19 @@ import com.launchacademy.petadoption.models.AdoptablePet;
 import com.launchacademy.petadoption.models.PetType;
 import com.launchacademy.petadoption.services.AdoptablePetService;
 import com.launchacademy.petadoption.services.PetTypeService;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AdoptablePetSeeder {
 
-  private AdoptablePetService adoptablePetService;
-  private PetTypeService petTypeService;
-  private PetTypeSeeder petTypeSeeder;
+  private final AdoptablePetService adoptablePetService;
+  private final PetTypeService petTypeService;
+  private final PetTypeSeeder petTypeSeeder;
 
   @Autowired
   public AdoptablePetSeeder(
@@ -35,15 +38,42 @@ public class AdoptablePetSeeder {
     if (adoptablePetService.findAll().size() == 0) {
       for (int i = 1; i <= 9; i++) {
         AdoptablePet pet = new AdoptablePet();
-        pet.setName("Pet " + i);
-        pet.setImgUrl("https://picsum.photos/300/" + (300 + i));
         pet.setAge(i + 1);
         pet.setVaccinationStatus(i % 2 == 0);
-        pet.setAdoptionStory("Adoption Story " + i);
         pet.setAdoptionStatus(i % 3 == 0 ? "pending" : "available");
-        pet.setPetType(petTypes.get(i % petTypes.size()));
+        PetType type = petTypes.get(i % petTypes.size());
+        pet.setPetType(type);
+        pet.setAdoptionStory(getHipsterIpsum());
+        int petNum = (i - 1) / 3 + 1;
+        if (type.getType().equals("cat")) {
+          pet.setName("Cat " + petNum);
+          pet.setImgUrl("https://placekitten.com/" + (298 + i));
+        } else if (type.getType().equals("dog")) {
+          pet.setName("Dog " + petNum);
+          pet.setImgUrl("https://placedog.net/" + (298 + i));
+        } else {
+          pet.setName("Bear " + petNum);
+          pet.setImgUrl("https://placebear.com/300/" + (298 + i));
+        }
         adoptablePetService.save(pet);
       }
     }
+  }
+
+  private String getHipsterIpsum() {
+    Random rand = new Random();
+    int sentences = rand.nextInt(4 - 1) + 1;
+    String command = "curl -s https://hipsum.co/api/?type=hipster-centric&sentences=" + sentences;
+    String adoptionStory;
+    try {
+      Process process = Runtime.getRuntime().exec(command);
+      InputStream inputStream = process.getInputStream();
+      String s = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
+      adoptionStory = s.substring(s.indexOf("\"") + 1, s.lastIndexOf("\""));
+      process.destroy();
+    } catch (Exception e) {
+      adoptionStory = "Story " + sentences;
+    }
+    return adoptionStory;
   }
 }

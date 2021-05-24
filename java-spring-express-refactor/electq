@@ -1,0 +1,12 @@
+                        List of relations
+ Schema |               Name                |   Type   |  Owner   
+--------+-----------------------------------+----------+----------
+ public | adoptable_pets                    | table    | postgres
+ public | adoptable_pets_id_seq             | sequence | postgres
+ public | flyway_schema_history             | table    | postgres
+ public | pet_surrender_applications        | table    | postgres
+ public | pet_surrender_applications_id_seq | sequence | postgres
+ public | pet_types                         | table    | postgres
+ public | pet_types_id_seq                  | sequence | postgres
+(7 rows)
+
