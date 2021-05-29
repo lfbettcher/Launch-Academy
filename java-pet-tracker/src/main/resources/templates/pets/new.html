@@ -3,7 +3,7 @@
   <body>
     <h1>Add a New Pet</h1>
 
-    <form action="/pets/new" method="POST" th:object="${pet}">
+    <form action="/pets/new" method="POST" th:object="${petDto}">
       <div>
         <label th:for="name">Name</label>
         <input type="text" th:field="*{name}" />
@@ -13,7 +13,6 @@
         <label th:for="speciesName">Species</label>
         <input type="text" th:field="*{speciesName}" />
         <p th:errors="*{speciesName}" />
-        <input type="hidden" th:field="*{species}" th:value="1" />
       </div>
       <div>
         <label th:for="breed">Breed</label>

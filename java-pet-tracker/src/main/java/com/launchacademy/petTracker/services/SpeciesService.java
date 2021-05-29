@@ -1,6 +1,5 @@
 package com.launchacademy.petTracker.services;
 
-import com.launchacademy.petTracker.models.Pet;
 import com.launchacademy.petTracker.models.Species;
 import com.launchacademy.petTracker.repositories.SpeciesRepository;
 import java.util.List;

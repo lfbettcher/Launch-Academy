@@ -41,9 +41,6 @@ public class Pet {
   @JoinColumn(name = "species_id", nullable = false)
   private Species species;
 
-  @NotNull
-  private String speciesName;
-
   @NotBlank
   @Length(min = 1, max = 14)
   @Pattern(regexp = "\\D+", message = "Cannot contain numbers")

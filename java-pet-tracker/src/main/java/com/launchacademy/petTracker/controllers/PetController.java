@@ -38,12 +38,13 @@ public class PetController {
     return "pets/new";
   }
 
-  @PostMapping
+  @PostMapping("/new")
   public String addPet(@ModelAttribute @Valid Pet pet, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       return "pets/new";
     } else {
-      petRepository.save(pet);
+//      petService.saveDto(dto);
+      petService.save(pet);
       return "redirect:/pets";
     }
   }

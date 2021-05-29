@@ -36,7 +36,7 @@ public class PetSeeder {
         pet.setAge(i);
         pet.setNeutered(i % 2 == 0);
         pet.setSpecies(allSpecies.get(i % allSpecies.size()));
-        petService.save(pet);
+        petService.savePet(pet);
       }
     }
   }
